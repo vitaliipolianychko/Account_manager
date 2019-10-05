@@ -29,6 +29,17 @@ module.exports = {
     "jsx-quotes": [
       1,
       "prefer-double"
-    ]
+    ],
+    "no-restricted-globals": [
+      "error",
+      {
+          "name": "event",
+          "message": "Use local parameter instead."
+      },
+      {
+          "name": "fdescribe",
+          "message": "Do not commit fdescribe. Use describe instead."
+      }
+  ]
   },
 };

@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { myInput } from '../Field/index';
 import { requiredInput, matchInput } from '../../Validation';
-import Header from '../Header';
+import Avatar from '../svg/avatar.svg';
+import '../LoginForm/style.css'
 
 class LoginForm extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
       <div>
-      <Header />
+      <img src={Avatar} />
       <form onSubmit={handleSubmit}>
+        <div className="form">
         <Field
           name="username"
           component={myInput}
@@ -33,6 +35,7 @@ class LoginForm extends Component {
           validate={[requiredInput, matchInput]}
         />
         <button type="submit" label="submit">Submit</button>
+        </div>
       </form>
       </div>
     );

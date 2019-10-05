@@ -4,9 +4,12 @@
   "homepage": "http://vitaliipolianychko.github.io/Account_manager",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.5.0",
+    "history": "^4.10.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.1",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.1.2",
     "redux": "^4.0.4",
     "redux-form": "^8.2.6"

@@ -1,18 +1,27 @@
 import React from "react";
-import styles from '../Header/style.css'
-// import { Link, NavLink } from "react-router-dom";
+ import { NavLink } from "react-router-dom";
+import '../Header/style.css';
 
 import  Logo  from "../svg/Logo.svg";
 import  addUsers  from "../svg/addUsers.svg";
-import listOfUsers from '../svg/listOfUsers.svg'
+import listOfUsers from '../svg/listOfUsers.svg';
 
 function Header() {
     return(
-    <header className = "header">
-        <div className= "header-logo"><img src={Logo} /></div>
+      <header className= "header">
+      <div className="header-logo"><img src={Logo} /></div>
 
-        <div className="add-user"><img src={addUsers} /> <span>Add new user</span></div>
-        <div className="list-ofUsers"><img src={listOfUsers} /> <span>List of users</span></div>
+      <NavLink className="add-user" activeClassName='active' to="/addUser"><div >
+<img src={addUsers} /> 
+{' '}
+<span>Add new user</span>
+</div></NavLink>
+<NavLink className="list-ofUsers" activeClassName='active' to="/listUsers"><div >
+<img src={listOfUsers} /> 
+{' '}
+<span>List of users</span>
+</div>
+</NavLink>
     </header>
     );
 }

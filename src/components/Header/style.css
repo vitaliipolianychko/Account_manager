@@ -15,7 +15,6 @@ body{
     font-weight: 500;
     font-size: 14px;
     line-height: 16px;
-    color: #FFFFFF;
 }
 .header-logo{
     margin-left: 20%;
@@ -24,8 +23,15 @@ body{
 .add-user{
     margin-left: 35%;
     padding-top: 20px;
+    text-decoration: none;
+    color: silver;
 }
 .list-ofUsers{
     margin-left: 3%;
     padding-top: 20px;
+    text-decoration: none;
+    color: silver;
+}
+.active{
+    color: white;
 }

@@ -1,23 +1,18 @@
 import React, { Component, Fragment } from 'react';
-import {SubmissionError} from 'redux-form';
-import LoginForm from '../components/LoginForm';
+import { Switch, Route, BrowserRouter, Redirect } from 'react-router-dom';
+import AddUser from '../Pages/addUser';
+import ListUsers from '../Pages/listUsers';
 
 class App extends Component {
-      submit = input=>{
-        if(['Настя', 'Леша', 'Миша', 'Света'].includes (input.username)){
-          throw new SubmissionError ({
-            username : "Имя пользователя уже существует",
-          });
-        }else{
-          window.alert (JSON.stringify(input));
-        }
-    };
-
   render() {
     return (
-      <>
-      <LoginForm onSubmit={this.submit} />
-      </>
+
+      <Switch>
+        <Route exact path ="/" render = {() => <Redirect to="/listUsers" />} />
+        <Route path="/addUser" component={AddUser} />
+        <Route path="/listUsers" component={ListUsers} />
+
+      </Switch>
     );
   }
 }
