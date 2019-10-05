@@ -13,7 +13,7 @@ const store = createStore(reducer);
 
 ReactDOM.render(<Provider store={store}>       
 {' '}
-<BrowserRouter>
+<BrowserRouter basename="/Account_manager/">
   <App />
   </BrowserRouter>
                 </Provider>, document.getElementById('root'));
