@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4b1ff10e10a008c98a88721319693b95",
+    "revision": "01627b2384fb3afaf4040a4df2972af2",
     "url": "/Account_manager/index.html"
   },
   {
-    "revision": "63521a904dd636999e72",
-    "url": "/Account_manager/static/css/main.3640f1d8.chunk.css"
+    "revision": "f1f5f90722a4318af3b8",
+    "url": "/Account_manager/static/css/main.c7033225.chunk.css"
   },
   {
-    "revision": "c159b98616a6dad10c05",
-    "url": "/Account_manager/static/js/2.8aeef31e.chunk.js"
+    "revision": "d61b73c28b95a4470f60",
+    "url": "/Account_manager/static/js/2.269a9e93.chunk.js"
   },
   {
-    "revision": "63521a904dd636999e72",
-    "url": "/Account_manager/static/js/main.5b718c19.chunk.js"
+    "revision": "f1f5f90722a4318af3b8",
+    "url": "/Account_manager/static/js/main.ea7e57da.chunk.js"
   },
   {
     "revision": "0e6f20ecda13cb1c8613",
@@ -26,6 +26,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "7e9d623db05c8aa46ec4b34453653574",
     "url": "/Account_manager/static/media/addUsers.7e9d623d.svg"
+  },
+  {
+    "revision": "44ca224b1cb24aa1171779cef4cccc05",
+    "url": "/Account_manager/static/media/avatar.44ca224b.svg"
   },
   {
     "revision": "f41d10ed448a258f32b9a9aac4e683ba",
