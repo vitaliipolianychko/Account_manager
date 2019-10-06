@@ -1,0 +1,8 @@
+.contactsForm{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    }
+.select{
+    width: 300px;
+}

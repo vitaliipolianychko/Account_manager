@@ -1,0 +1,26 @@
+.AccountForm{
+display: flex;
+flex-direction: row;
+justify-content: center;
+}
+.firstColumn{
+flex-direction: column;
+margin-right: 10%;
+}
+.secondColumn{
+    flex-direction: column;
+}
+.btn-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.radio{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.radio>*:first-child{
+    margin-right: 30px;
+}
