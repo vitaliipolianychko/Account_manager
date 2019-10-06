@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Account_manager/static/css/main.d5b89f27.chunk.css",
-    "main.js": "/Account_manager/static/js/main.c8af752f.chunk.js",
-    "main.js.map": "/Account_manager/static/js/main.c8af752f.chunk.js.map",
+    "main.js": "/Account_manager/static/js/main.3ef2e2c0.chunk.js",
+    "main.js.map": "/Account_manager/static/js/main.3ef2e2c0.chunk.js.map",
     "runtime-main.js": "/Account_manager/static/js/runtime-main.15b059d9.js",
     "runtime-main.js.map": "/Account_manager/static/js/runtime-main.15b059d9.js.map",
     "static/css/2.4482b0e7.chunk.css": "/Account_manager/static/css/2.4482b0e7.chunk.css",
     "static/js/2.39fc4f79.chunk.js": "/Account_manager/static/js/2.39fc4f79.chunk.js",
     "static/js/2.39fc4f79.chunk.js.map": "/Account_manager/static/js/2.39fc4f79.chunk.js.map",
     "index.html": "/Account_manager/index.html",
-    "precache-manifest.669ddcb5d1f2b29844e7eae912b0de38.js": "/Account_manager/precache-manifest.669ddcb5d1f2b29844e7eae912b0de38.js",
+    "precache-manifest.88cb3eb49a37a5aec3c6c8af89fb841b.js": "/Account_manager/precache-manifest.88cb3eb49a37a5aec3c6c8af89fb841b.js",
     "service-worker.js": "/Account_manager/service-worker.js",
     "static/css/2.4482b0e7.chunk.css.map": "/Account_manager/static/css/2.4482b0e7.chunk.css.map",
     "static/css/main.d5b89f27.chunk.css.map": "/Account_manager/static/css/main.d5b89f27.chunk.css.map",
