@@ -35,8 +35,48 @@ class CapabilitiesForm extends Component {
           </div>
           <div className="secondColumn">
             <span>My hobbies</span>
-            
-
+            <div>
+              <input
+                name="Art"
+                type="checkbox"
+              />
+              <span>Art</span>
+            </div>
+            <div>
+              <input
+                name="Sport"
+                type="checkbox"
+              />
+              <span>Sport, fitness, aerobica and staff like that</span>
+            </div>
+            <div>
+              <input
+                name="play"
+                type="checkbox"
+              />
+              <span>I just want to play games, I’m not living in this life</span>
+            </div>
+            <div>
+              <input
+                name="female"
+                type="checkbox"
+              />
+              <span>I’m a female... I’m doing nothing. Every day.</span>
+            </div>
+            <div>
+              <input
+                name="Guitar"
+                type="checkbox"
+              />
+              <span>Guitar, guitar and guitar again. I’m fall in love with it.</span>
+            </div>
+            <div>
+              <input
+                name="WTF"
+                type="checkbox"
+              />
+              <span>WTF is “hobbies”???</span>
+            </div>
           </div>
         </div>
       </form>
