@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+/*import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import Select from 'react-select';
 import { myInput } from '../Field/index';
-import { requiredInput, matchInput } from '../../Validation';
+// import { requiredInput, matchInput } from '../../Validation';
 import "./capabilitiesForm.css";
 
 

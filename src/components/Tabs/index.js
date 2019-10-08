@@ -1,29 +1,3 @@
-/*
-import React from 'react';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import AppBar from '@material-ui/core/AppBar';
-
-function NavTabs(props) {
-
-  
-  return (
-    <AppBar position="static">
-      <Tabs
-        centered
-        variant="fullWidth"
-      >
-        <Tab label="1. Account"  />
-        <Tab label="2. Profile"  />
-        <Tab label="3. Contacts" />
-        <Tab label="3. Capabilities" />
-      </Tabs>
-    </AppBar>
-  );
-}
-
-export default NavTabs;
-*/
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -31,11 +5,10 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import {SubmissionError} from 'redux-form';
 import LoginForm from "../LoginForm";
 import ProfileForm from "../ProfileForm";
-import ContactsForm from "../ContactsForm";
-import CapabilitiesForm from "../CapabilitiesForm";
+// import ContactsForm from "../ContactsForm";
+// import CapabilitiesForm from "../CapabilitiesForm";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -82,16 +55,6 @@ export default function SimpleTabs() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const submit = input=>{
-    if(['Настя', 'Леша', 'Миша', 'Света'].includes (input.username)){
-      throw new SubmissionError ({
-        username : "Имя пользователя уже существует",
-      });
-    }else{
-      window.alert (JSON.stringify(input));
-    }
-};
-
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -103,16 +66,16 @@ export default function SimpleTabs() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <LoginForm onSubmit={submit} />
+        <LoginForm />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <ProfileForm />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <ContactsForm />
+        Tab three
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <CapabilitiesForm />
+        Tab four
       </TabPanel>
     </div>
   );

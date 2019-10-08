@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+/*import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import Select from 'react-select';
 import { myInput } from '../Field/index';
-import { requiredInput, matchInput } from '../../Validation';
+// import { requiredInput, matchInput } from '../../Validation';
 import "./contactsForm.css";
 import InputMask from 'react-input-mask';
 
@@ -53,7 +53,7 @@ class ContactsForm extends Component {
                 name="github"
                 component={myInput}
                 type="text"
-                validate={requiredInput}
+                // validate={requiredInput}
               />
             </div>
             <span>FaceBook link</span>
@@ -62,7 +62,7 @@ class ContactsForm extends Component {
                 name="facebook"
                 component={myInput}
                 type="text"
-                validate={requiredInput}
+                // validate={requiredInput}
               />
             </div>
             <span>Main Language</span>
