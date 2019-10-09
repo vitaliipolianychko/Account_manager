@@ -1,111 +1,19 @@
-/* import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
-import DatePicker from 'react-date-picker';
-import { myInput } from '../Field/index';
-// import { requiredInput, matchInput } from '../../Validation';
-import "./profileForm.css";
-
-
-// eslint-disable-next-line react/prefer-stateless-function
-class ProfileForm extends Component {
-  render() {
-    const { handleSubmit } = this.props;
-    return (
-      <form onSubmit={handleSubmit}>
-        <div className="AccountForm">
-          <div className="firstColumn">
-            <span>First name</span>
-            <div>
-              <Field
-                name="firstname"
-                component={myInput}
-                type="text"
-                // validate={requiredInput}
-              />
-            </div>
-            <span>Last name</span>
-            <div>
-              <Field
-                name="lastname"
-                component={myInput}
-                type="text"
-                // validate={[requiredInput, matchInput]}
-              />
-            </div>
-            <span>Birth Date</span>
-            <div>
-              <DatePicker />
-            </div>
-          </div>
-          <div className="secondColumn">
-            <span>Email</span>
-            <div>
-              <Field
-                name="email"
-                component={myInput}
-                type="email"
-                // validate={[requiredInput, matchInput]}
-              />
-            </div>
-            <span>Address</span>
-            <div>
-              <Field
-                name="addres"
-                component={myInput}
-                type="text"
-                // validate={[requiredInput, matchInput]}
-              />
-            </div>
-            <span>Gender</span>
-            <div className="radio">
-              <div>
-                <label>
-                  <input type="radio" value="option1" checked />
-            Male
-                </label>
-              </div>
-              <div>
-                <label>
-                  <input type="radio" value="option2" />
-            Female
-                </label>
-              </div>
-            </div>
-            <div className="btn-container">
-              <div>
-                <button type="submit" label="back" className="btn-submit">Back</button>
-              </div>
-              <div>
-                <button type="submit" label="submit" className="btn-submit">Forward</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
-
-    );
-  }
-}
-
-ProfileForm = reduxForm({
-  form: 'login',
-})(ProfileForm);
-
-export default ProfileForm;
-*/
-
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { Field, reduxForm,formValueSelector } from 'redux-form';
 import TextField from '@material-ui/core/TextField';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
-import Checkbox from '@material-ui/core/Checkbox';
-import MenuItem from '@material-ui/core/MenuItem';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import DatePicker from 'react-date-picker';
 import asyncValidate from '../../Validation/index';
+import "./profileForm.css";
+import {onAddUser} from '../../redux/Actions';
 
 const validate = values => {
   const errors = {};
-  const requiredFields = [ 'firstName', 'lastName', 'email', 'favoriteColor', 'notes' ];
+  const requiredFields = [ 'firstName', 'lastName', 'email',  'address', 'sex' ];
   requiredFields.forEach(field => {
     if (!values[ field ]) {
       errors[ field ] = 'Required';
@@ -119,60 +27,102 @@ const validate = values => {
 
 const renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
   <TextField
-    hintText={label}
+    label={label}
     floatingLabelText={label}
     errorText={touched && error}
     {...input}
     {...custom}
+    variant="outlined"
+    className="input-profile"
   />
 );
 
-const renderCheckbox = ({ input, label }) => (
-  <Checkbox
-    label={label}
-    checked={!!input.value}
-    onCheck={input.onChange} 
-  />
+const radioButton = ({ input, ...rest }) => (
+  <FormControl>
+    <RadioGroup {...input} {...rest}>
+      <FormControlLabel value="female" control={<Radio />} label="Female" />
+      <FormControlLabel value="male" control={<Radio />} label="Male" />
+    </RadioGroup>
+  </FormControl>
 );
+/*
+const selectorDo = formValueSelector('loginForm');
+const selector = formValueSelector('profileForm');
 
+const mapStateToProps = state => {
+  const userNameValue = selectorDo(state, 'userName');
+  const passwordValue = selectorDo(state, 'password');
+  const confirmPasswordValue = selectorDo(state, 'confirmPassword');
+  const firstNameValue = selector(state, 'firstName');
+  const lastNameValue = selector(state, 'lastName');
+  const emailValue = selector(state, 'email');
+  const addressValue = selector(state, 'address');
+  const sexValue = selector(state, 'sex');
+  return {
+    userNameValue, passwordValue, confirmPasswordValue, firstNameValue, lastNameValue, emailValue, addressValue, sexValue
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    AddUser: (userName, password, confirmPassword, firstName, lastName, email, address, sex) => {
+      dispatch(onAddUser(userName, password, confirmPassword, firstName, lastName, email, address, sex));
+    },
+  };
+};
+*/
 
-const MaterialUiForm = props => {
-  const { handleSubmit, pristine, reset, submitting } = props;
+// eslint-disable-next-line import/no-mutable-exports
+let ProfileForm = props => {
+  const { handleSubmit, pristine, submitting} = props;
+   /* const submitData =() => {
+    AddUser(userNameValue, passwordValue,
+      confirmPasswordValue, firstNameValue, lastNameValue, emailValue, addressValue, sexValue );
+  };
+  */
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <Field name="firstName" component={renderTextField} label="First Name" />
-      </div>
-      <div>
-        <Field name="lastName" component={renderTextField} label="Last Name" />
-      </div>
-      <div>
-        <Field name="email" component={renderTextField} label="Email" />
-      </div>
-      <div>
-        <Field name="sex" component={RadioGroup}>
-          <Radio value="male" label="male" />
-          <Radio value="female" label="female" />
-        </Field>
-      </div>
-      <div>
-        <Field name="employed" component={renderCheckbox} label="Employed" />
-      </div>
-      <div>
-        <Field name="notes" component={renderTextField} label="Notes" multiLine rows={2} />
-      </div>
-      <div>
-        <button type="submit" disabled={pristine || submitting}>Submit</button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>
-Clear Values
-        </button>
-      </div>
-    </form>
+    <div className="AccountForm">
+      <form onSubmit={handleSubmit}>
+        <div className="firstColumn">
+          <div className="inputMargin">
+            <Field name="firstName" component={renderTextField} label="First Name" />
+          </div>
+          <div className="inputMargin">
+            <Field name="lastName" component={renderTextField} label="Last Name" />
+          </div>
+          <div className="inputMargin">
+            <DatePicker />
+          </div>
+        </div>
+        <div className="secondColumn">
+          <div className="inputMargin">
+            <Field name="email" component={renderTextField} label="Email" />
+          </div>
+          <div className="inputMargin">
+            <Field name="address" component={renderTextField} label="Address" />
+          </div>
+          <div className="radio">
+            <Field name="sex" component={radioButton}>
+              <Radio value="male" label="male" />
+              <Radio value="female" label="female" />
+            </Field>
+          </div>
+          <div>
+            <button type="submit" disabled={pristine || submitting} className="btn-profile">Forward</button>
+          </div>
+        </div>
+      </form>
+    </div>
   );
 };
 
-export default reduxForm({
-  form: 'MaterialUiForm',  // a unique identifier for this form
+ProfileForm = reduxForm({
+  form: 'profileForm',  // a unique identifier for this form
   validate,
   asyncValidate
-})(MaterialUiForm);
+})(ProfileForm);
+
+/* ProfileForm = connect(mapStateToProps,
+  mapDispatchToProps)(ProfileForm);
+  */
+
+export default ProfileForm;

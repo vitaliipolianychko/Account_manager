@@ -14,13 +14,24 @@ if (!locStorage) {
 const reducerData = (state = initialState, action) => {
     let stateCopy;
   switch (action.type) {
-    case ADD:
+        case ADD:
         if (state.Data.length === 0) {
           const newUser = {
             id: 0,
             users: action.userName,
             passwords: action.password,
             confirmPasswords: action.confirmPassword,
+            firstName: action.firstName,
+            lastName: action.lastName,
+            email: action.email,
+            address: action.address,
+            sex: action.sex,
+            company: action.company,
+            github: action.github,
+            facebook: action.facebook,
+            language: action.language,
+            fax: action.fax,
+            phoneOne: action.phoneOne,
           };
           stateCopy = {
             ...state,
@@ -33,6 +44,17 @@ const reducerData = (state = initialState, action) => {
             users: action.userName,
             passwords: action.password,
             confirmPasswords: action.confirmPassword,
+            firstName: action.firstName,
+            lastName: action.lastName,
+            email: action.email,
+            address: action.address,
+            sex: action.sex,
+            company: action.company,
+            github: action.github,
+            facebook: action.facebook,
+            language: action.language,
+            fax: action.fax,
+            phoneOne: action.phoneOne,
           };
           stateCopy = {
             ...state,

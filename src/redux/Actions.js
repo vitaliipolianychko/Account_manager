@@ -7,12 +7,23 @@ export const onDeleteTask = taskId => {
     taskId,
   };
 };
-
-export const onAddUser = (userName, password, confirmPassword) => {
-    return {
-        type: ADD,
-        userName,
-        password,
-        confirmPassword,
-    };
+export const onAddUser = (userName, password, confirmPassword, firstName, lastName, email, address, sex,company, github, facebook, language, fax, phoneOne) => {
+  return {
+      type: ADD,
+      userName,
+      password,
+      confirmPassword,
+      firstName,
+      lastName,
+      email,
+      address,
+      sex,
+      company,
+      github,
+      facebook,
+      language,
+      fax,
+      phoneOne
+  };
 };
+

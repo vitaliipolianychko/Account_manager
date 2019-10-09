@@ -7,8 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import LoginForm from "../LoginForm";
 import ProfileForm from "../ProfileForm";
-// import ContactsForm from "../ContactsForm";
-// import CapabilitiesForm from "../CapabilitiesForm";
+import ContactsForm from "../ContactsForm";
+import CapabilitiesForm from "../CapabilitiesForm";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -72,10 +72,10 @@ export default function SimpleTabs() {
         <ProfileForm />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Tab three
+        <ContactsForm />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Tab four
+        <CapabilitiesForm />
       </TabPanel>
     </div>
   );

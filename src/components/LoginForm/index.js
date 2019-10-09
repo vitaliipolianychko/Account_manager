@@ -47,7 +47,7 @@ const renderTextField = ({
     className="input"
   />
 );
-const selector = formValueSelector('loginForm');
+/* const selector = formValueSelector('loginForm');
 
 const mapStateToProps = state => {
   const userNameValue = selector(state, 'userName');
@@ -64,14 +64,10 @@ const mapDispatchToProps = dispatch => {
     },
   };
 };
-
+*/
 // eslint-disable-next-line import/no-mutable-exports
 let LoginForm = props => {
-  const { handleSubmit, pristine, submitting, userNameValue, passwordValue, confirmPasswordValue, AddUser } = props;
-  const submitData =() => {
-    alert(`${userNameValue } ${passwordValue } ${ confirmPasswordValue}`);
-    AddUser(userNameValue,passwordValue,confirmPasswordValue );
-  };
+  const { handleSubmit, pristine, submitting } = props;
   return (
     <div className="body">
       <div className="avatar"><ImageAvatars /></div>
@@ -92,7 +88,7 @@ let LoginForm = props => {
           </div>
           <div />
           <div>
-            <button type="submit" className="btn-submit" disabled={pristine || submitting} onClick={submitData}>
+            <button type="submit" className="btn-submit" disabled={pristine || submitting}>
           Forward 
             </button>
           </div>
@@ -108,7 +104,4 @@ LoginForm= reduxForm({
   asyncValidate
 })(LoginForm);
 
-
-LoginForm = connect(mapStateToProps,
-  mapDispatchToProps)(LoginForm);
 export default LoginForm;
