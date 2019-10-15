@@ -3,9 +3,7 @@
 body{
     margin: 0px;
 }
-.header{
-    display: flex;
-    flex-direction: row;
+.headerBackground{
     width: 100%;
     height: 60px;
     margin: 0px;
@@ -16,18 +14,27 @@ body{
     font-size: 14px;
     line-height: 16px;
 }
-.header-logo{
-    margin-left: 20%;
+.header{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+.navigation{
+    display: flex;
+    flex-direction: row;
+}
+.headerLogo{
     padding-top: 21px;
 }
-.add-user{
-    margin-left: 35%;
+.addUser{
     padding-top: 20px;
     text-decoration: none;
     color: silver;
 }
-.list-ofUsers{
-    margin-left: 3%;
+.listOfUsers{
+    margin-left: 60px;
     padding-top: 20px;
     text-decoration: none;
     color: silver;
@@ -35,3 +42,4 @@ body{
 .active{
     color: white;
 }
+

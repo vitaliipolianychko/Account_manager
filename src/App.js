@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import AddUser from '../Pages/addUser';
-import ListUsers from "../Pages/listUsers";
+import AddUser from "./Pages/addUser/AddUser";
+import ListUsers from "./Pages/listUsers/ListUsers";
 
 class App extends Component {
   render() {

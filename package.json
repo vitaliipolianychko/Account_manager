@@ -5,9 +5,11 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.5.0",
+    "date-time-picker": "^0.5.3",
     "history": "^4.10.1",
     "react": "^16.9.0",
     "react-date-picker": "^7.8.2",
+    "react-datepicker": "^2.9.6",
     "react-dom": "^16.9.0",
     "react-input-mask": "^2.0.4",
     "react-redux": "^7.1.1",

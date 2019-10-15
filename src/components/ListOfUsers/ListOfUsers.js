@@ -7,8 +7,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { Link } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
+import delUser from './icons/Close.svg';
+import { onDeleteTask } from '../../redux/actions';
 
 
 const useStyles = makeStyles(() => ({
@@ -36,9 +37,16 @@ const mapStateToProps = state => {
       Data: state.reducerData.Data,
     };
   };
+  const mapDispatchToProps = dispatch => {
+    return {
+      DeleteTask: taskId => {
+        dispatch(onDeleteTask(taskId));
+      },
+    };
+  };
 
  function CustomizedTables(props) {
-  const { Data } = props;
+  const { Data, DeleteTask } = props;
   const classes = useStyles();
   const DataUser = Data.map(task => {
     const { users } = task;
@@ -54,10 +62,7 @@ const mapStateToProps = state => {
         <TableHead>
           <TableRow className={classes.backTableRoot}>
             <TableCell align="left" variant="head">
-              №
-            </TableCell>
-            <TableCell align="left" variant="head">
-              Tasks
+              Name
             </TableCell>
             <TableCell align="left" variant="head">
               first Name
@@ -73,14 +78,21 @@ const mapStateToProps = state => {
         <TableBody>
           {DataUser.map((task, index) => (
             <TableRow key={task.id}>
-              <TableCell component="th" scope="row">
-                {index + 1}
-              </TableCell>
               <TableCell align="left">{task.users}</TableCell>
               <TableCell align="left">{task.firstName}</TableCell>
               <TableCell align="left">{task.lastName}</TableCell>
               <TableCell align="left">{task.company}</TableCell>
+              <TableCell align="left">
+                <button
+                  style={{border: 0, outline: "none", cursor: 'pointer', background: 'white'}}
+                  onClick={() => {
+                      DeleteTask(index);
+                    }}
+                >
+                  <img src={delUser} alt="my image"  />
 
+                </button>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -88,5 +100,5 @@ const mapStateToProps = state => {
     </Paper>
   );
 }
-CustomizedTables = connect(mapStateToProps)(CustomizedTables);
+CustomizedTables = connect(mapStateToProps, mapDispatchToProps)(CustomizedTables);
 export default CustomizedTables;

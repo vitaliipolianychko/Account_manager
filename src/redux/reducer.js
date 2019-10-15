@@ -1,4 +1,4 @@
-import { DELETE, ADD } from './Actions';
+import { DELETE, ADD } from './actions';
 
 const locStorage = JSON.parse(localStorage.getItem('key'));
 let initialState;
