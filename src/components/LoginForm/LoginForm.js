@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
-
+import { NavLink } from "react-router-dom";
 // Validation Data
 import asyncValidate from '../../Validation/index';
 
@@ -59,7 +59,7 @@ let LoginForm = props => {
 	const { handleSubmit, pristine, submitting } = props;
 	const [type, setType] = useState('password');
 	const [typeSecond, setTypeSecond] = useState('password');
-
+	console.log(props);
 	const checkPassword = () => {
 		if (type === 'password') {
 			setType('text');
@@ -75,99 +75,103 @@ let LoginForm = props => {
 			setTypeSecond('password');
 		}
 	};
+
 	return (
-		<div className={styles.body}>
-			<div className={styles.avatar}>
-				<ImageAvatars />
-			</div>
+  <div className={styles.body}>
+    <div className={styles.avatar}>
+      <ImageAvatars />
+    </div>
 
-			<form onSubmit={handleSubmit(handleSubmit)}>
-				<div className={styles.form}>
-					<div className={styles.inputMargin}>
-						<div className={styles.label}>
-							<label>User name</label>
-							<label>*</label>
-						</div>
-						<Field
-							name="userName"
-							component={myInput}
-							className={styles.input}
-						/>
-					</div>
+    <form onSubmit={handleSubmit(handleSubmit)}>
+      <div className={styles.form}>
+        <div className={styles.inputMargin}>
+          <div className={styles.label}>
+            <label>User name</label>
+            <label>*</label>
+          </div>
+          <Field
+            name="userName"
+            component={myInput}
+            className={styles.input}
+          />
+        </div>
 
-					<div className={styles.inputMargin}>
-						<div className={styles.label}>
-							<label>Password</label>
-							<label>*</label>
-						</div>
-						<Field
-							name="password"
-							component={myInput}
-							type={type}
-							className={styles.input}
-						/>
-						<span className={styles.icons}>
-							{type === 'password' && (
-								<input
-									type="image"
-									src={hiddenPass}
-									onClick={checkPassword}
-									style={{ outline: 'none' }}
-								/>
+        <div className={styles.inputMargin}>
+          <div className={styles.label}>
+            <label>Password</label>
+            <label>*</label>
+          </div>
+          <Field
+            name="password"
+            component={myInput}
+            type={type}
+            className={styles.input}
+          />
+          <span className={styles.icons}>
+            {type === 'password' && (
+            <input
+              type="image"
+              src={hiddenPass}
+              onClick={checkPassword}
+              style={{ outline: 'none' }}
+            />
 							)}
-							{type === 'text' && (
-								<input
-									type="image"
-									src={showPass}
-									onClick={checkPassword}
-									style={{ outline: 'none' }}
-								/>
+            {type === 'text' && (
+            <input
+              type="image"
+              src={showPass}
+              onClick={checkPassword}
+              style={{ outline: 'none' }}
+            />
 							)}
-						</span>
-					</div>
-					<div className={styles.inputMargin}>
-						<div className={styles.label}>
-							<label>Repeat Password</label>
-							<label>*</label>
-						</div>
-						<Field
-							name="confirmPassword"
-							component={myInput}
-							type={typeSecond}
-							className={styles.input}
-						/>
-						<span className={styles.icons}>
-							{typeSecond === 'password' && (
-								<input
-									type="image"
-									src={hiddenPass}
-									onClick={checkConfirmPassword}
-									style={{ outline: 'none' }}
-								/>
+          </span>
+        </div>
+        <div className={styles.inputMargin}>
+          <div className={styles.label}>
+            <label>Repeat Password</label>
+            <label>*</label>
+          </div>
+          <Field
+            name="confirmPassword"
+            component={myInput}
+            type={typeSecond}
+            className={styles.input}
+          />
+          <span className={styles.icons}>
+            {typeSecond === 'password' && (
+            <input
+              type="image"
+              src={hiddenPass}
+              onClick={checkConfirmPassword}
+              style={{ outline: 'none' }}
+            />
 							)}
-							{typeSecond === 'text' && (
-								<input
-									type="image"
-									src={showPass}
-									onClick={checkConfirmPassword}
-									style={{ outline: 'none' }}
-								/>
+            {typeSecond === 'text' && (
+            <input
+              type="image"
+              src={showPass}
+              onClick={checkConfirmPassword}
+              style={{ outline: 'none' }}
+            />
 							)}
-						</span>
-					</div>
-					<div />
-					<div className={styles.btn}>
-						<button
-							type="submit"
-							className={styles.btnSubmit}
-							disabled={pristine || submitting}
-						>
+          </span>
+        </div>
+        <div />
+        <div className={styles.btn}>
+          <NavLink to="/addUser/profile">
+            <button
+              type="submit"
+              className={styles.btnSubmit}
+			  // disabled={pristine || submitting}
+              onClick={() => { props.updatePage(2);}}
+            >
 							Forward
-						</button>
-					</div>
-				</div>
-			</form>
-		</div>
+            </button>
+          </NavLink>
+        </div>
+      </div>
+    </form>
+  </div>
 	);
 };
 

@@ -8,11 +8,11 @@ import ListUsers from './Pages/ListUsers/ListUsers';
 class App extends Component {
 	render() {
 		return (
-			<Switch>
-				<Route exact path="/" render={() => <Redirect to="/listUsers" />} />
-				<Route path="/addUser" component={AddUser} />
-				<Route path="/listUsers" component={ListUsers} />
-			</Switch>
+  <Switch>
+    <Route exact path="/" render={() => <Redirect to="/listUsers" />} />
+    <Route path="/addUser" component={AddUser} />
+    <Route path="/listUsers" component={ListUsers} />
+  </Switch>
 		);
 	}
 }

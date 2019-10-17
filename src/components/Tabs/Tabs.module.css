@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap');
+
 .result{
     width: 70%;
     margin: 0 auto;
@@ -6,6 +7,7 @@
 .tabs{
     display: flex;
     flex-direction: row;
+    margin-bottom: 65px;
 }
 
 .tab{
@@ -25,13 +27,35 @@
     font-size: 24px;
     line-height: 28px;
     color: black;
+    pointer-events: none;
+    cursor: no-drop;
+    outline: none;
+    text-decoration: none;
 }
-.tab.active{
+.tabClicked{
+    width: 25%;
+    height: 65px;
+    margin-top: 10px;
+    color: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #97BAF4;
+    opacity: 0.2;
+    cursor: pointer;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    color: black;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;   
+}
+.active{
+    opacity: 1;
     background: #4E86E4;
     color: white;
-}
-.content{
-    padding: 20px;
-    color: rgba(0,0,0,0.6);
-    background: rgba(255,255,255,0.2);
+    cursor: pointer;
 }

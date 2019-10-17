@@ -26,6 +26,8 @@
     flex-direction: row;
     justify-content: flex-end;
     margin-top: 140px;
+    cursor: pointer;
+    text-decoration: none;
 }
 .btnSubmit{
 border: 0px;

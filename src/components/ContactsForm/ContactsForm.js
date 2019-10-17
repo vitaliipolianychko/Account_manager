@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
+import { NavLink } from "react-router-dom";
 
 // React Components
 import InputMask from 'react-input-mask';
@@ -67,33 +68,33 @@ const validate = values => {
 	return errors;
 };
 const Input = props => (
-	<InputMask
-		mask="+7 (999) 999-99-99"
-		value={props.value}
-		onChange={props.onChange}
-	>
-		{inputProps => (
-			<Field
-				component={myInput}
-				className={styles.input}
-				name="phoneOne"
-				{...inputProps}
-				type="tel"
-				disableUnderline
-			/>
+  <InputMask
+    mask="+7 (999) 999-99-99"
+    value={props.value}
+    onChange={props.onChange}
+  >
+    {inputProps => (
+      <Field
+        component={myInput}
+        className={styles.input}
+        name="phoneOne"
+        {...inputProps}
+        type="tel"
+        disableUnderline
+      />
 		)}
-	</InputMask>
+  </InputMask>
 );
 
 const FormSelect = props => {
 	const { input, options } = props;
 
 	return (
-		<Select
-			{...input}
-			onChange={value => input.onChange(value)}
-			onBlur={() => input.onBlur(input.value)}
-			options={options}
+  <Select
+    {...input}
+    onChange={value => input.onChange(value)}
+    onBlur={() => input.onBlur(input.value)}
+    options={options}
 		/>
 	);
 };
@@ -216,93 +217,97 @@ let ContactsForm = props => {
 		);
 	};
 	return (
-		<form onSubmit={handleSubmit}>
-			<div className={styles.contactsForm}>
-				<div className={styles.first}>
-					<div className={styles.inputMargin}>
-						<div>
-							<label>Company</label>
-						</div>
-						<Field
-							name="company"
-							component={myInput}
-							label="Company"
-							className={styles.input}
-						/>
-					</div>
-					<div className={styles.inputMargin}>
-						<div>
-							<label>GitHub link</label>
-						</div>
-						<Field
-							name="github"
-							component={myInput}
-							label="GitHub link"
-							className={styles.input}
-						/>
-					</div>
-					<div className={styles.inputMargin}>
-						<div>
-							<label>Facebook link</label>
-						</div>
-						<Field
-							name="facebook"
-							component={myInput}
-							label="Facebook link"
-							className={styles.input}
-						/>
-					</div>
-					<div className={styles.inputMargin}>
-						<Field
-							className={styles.lang}
-							name="language"
-							component={FormSelect}
-							options={options}
-						/>
-					</div>
-				</div>
-				<div className={styles.second}>
-					<span>Fax</span>
-					<div className={styles.inputMargin}>
-						<Field
-							name="fax"
-							component={myInput}
-							label="fax"
-							className={styles.input}
-						/>
-					</div>
-					<span>Phone#1</span>
-					<div className={styles.inputMargin}>
-						<Input />
-					</div>
-					<span>Phone#2</span>
-					<div className={styles.inputMargin}>
-						<InputMask
-							name="phoneTwo"
-							mask="+7 (999) 999-99-99"
-							className={styles.input}
-						/>
-					</div>
-					<div className={styles.btn}>
-						<button
-							type="submit"
-							disabled={pristine || submitting}
-							className={styles.btnContactsBack}
-						>
+  <form onSubmit={handleSubmit}>
+    <div className={styles.contactsForm}>
+      <div className={styles.first}>
+        <div className={styles.inputMargin}>
+          <div>
+            <label>Company</label>
+          </div>
+          <Field
+            name="company"
+            component={myInput}
+            label="Company"
+            className={styles.input}
+          />
+        </div>
+        <div className={styles.inputMargin}>
+          <div>
+            <label>GitHub link</label>
+          </div>
+          <Field
+            name="github"
+            component={myInput}
+            label="GitHub link"
+            className={styles.input}
+          />
+        </div>
+        <div className={styles.inputMargin}>
+          <div>
+            <label>Facebook link</label>
+          </div>
+          <Field
+            name="facebook"
+            component={myInput}
+            label="Facebook link"
+            className={styles.input}
+          />
+        </div>
+        <div className={styles.inputMargin}>
+          <Field
+            className={styles.lang}
+            name="language"
+            component={FormSelect}
+            options={options}
+          />
+        </div>
+      </div>
+      <div className={styles.second}>
+        <span>Fax</span>
+        <div className={styles.inputMargin}>
+          <Field
+            name="fax"
+            component={myInput}
+            label="fax"
+            className={styles.input}
+          />
+        </div>
+        <span>Phone#1</span>
+        <div className={styles.inputMargin}>
+          <Input />
+        </div>
+        <span>Phone#2</span>
+        <div className={styles.inputMargin}>
+          <InputMask
+            name="phoneTwo"
+            mask="+7 (999) 999-99-99"
+            className={styles.input}
+          />
+        </div>
+        <div className={styles.btn}>
+          <NavLink to="/addUser/profile">
+            <button
+              type="submit"
+              // disabled={pristine || submitting}
+              className={styles.btnContactsBack}
+            >
 							Back
-						</button>
-						<button
-							type="submit"
-							disabled={pristine || submitting}
-							className={styles.btnContacts}
-							onClick={submitData}
-						>
+            </button>
+          </NavLink>
+          <NavLink to="/addUser/capabilities">
+            <button
+              type="submit"
+              // disabled={pristine || submitting}
+              className={styles.btnContacts}
+              onClick={() => { props.updatePage(4);}}
+            >
 							Forward
-						</button>
-					</div>
-				</div>
-			</div>
-		</form>
+            </button>
+          </NavLink>
+        </div>
+      </div>
+    </div>
+  </form>
 	);
 };
 

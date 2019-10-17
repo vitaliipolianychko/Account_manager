@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
+import { NavLink } from "react-router-dom";
 
 // React Components
 import Select from 'react-select';
@@ -153,9 +154,11 @@ I just want to play games,
         </label>
 
         <div className={styles.btn}>
-          <button type="submit" className={styles.btnCapabilitiesBack}>
+          <NavLink to="/addUser/contacts">
+            <button type="submit" className={styles.btnCapabilitiesBack}>
 								Back
-          </button>
+            </button>
+          </NavLink>
           <button
             type="submit"
             className={styles.btnCapabilities}

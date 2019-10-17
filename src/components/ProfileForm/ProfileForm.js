@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
+import { NavLink } from "react-router-dom";
 
 // validation Data
 import asyncValidate from '../../Validation/index';
@@ -79,116 +80,130 @@ let ProfileForm = props => {
 		alert(`${birthDayValue} `);
 	};
 	return (
-		<div>
-			<form onSubmit={handleSubmit(handleSubmit)}>
-				<div className={styles.AccountForm}>
-					<div className={styles.first}>
-						<div className={styles.inputMargin}>
-							<div className={styles.label}>
-								<label>First name</label> <label>*</label>
-							</div>
-							<Field
-								name="firstName"
-								component={myInput}
-								label="First Name"
-								className={styles.input}
-							/>
-						</div>
-						<div className={styles.inputMargin}>
-							<div className={styles.label}>
-								<label>Last name</label> <label>*</label>
-							</div>
-							<Field
-								name="lastName"
-								component={myInput}
-								label="Last Name"
-								className={styles.input}
-							/>
-						</div>
-						<div className={styles.inputMargin}>
-							<div className={styles.labelBirthDay}>
-								<label>Birth Day</label> <label>*</label>
-							</div>
-							<Field
-								name="birthDay"
-								component={renderDatePicker}
-								placeholderText="MM/DD/YYYY"
-								className={styles.datePicker}
-							/>
-						</div>
-					</div>
-					<div className={styles.second}>
-						<div className={styles.inputMargin}>
-							<div className={styles.label}>
-								<label>Email</label> <label>*</label>
-							</div>
-							<Field
-								name="email"
-								component={myInput}
-								label="Email"
-								className={styles.input}
-							/>
-						</div>
-						<div className={styles.inputMargin}>
-							<div className={styles.label}>
-								<label>Address</label> <label>*</label>
-							</div>
-							<Field
-								name="address"
-								component={myInput}
-								label="Address"
-								className={styles.input}
-							/>
-						</div>
-						<div>
-							<div className={styles.radioMargin}>
-								<label>Gender</label>
-							</div>
-							<div className={styles.radio}>
-								<label className={styles.container}>
-									<Field
-										name="sex"
-										component={myInput}
-										type="radio"
-										value="male"
-										className={styles.radioItem}
-									/>
-									<span className={styles.checkmark} />
+  <div>
+    <form onSubmit={handleSubmit(handleSubmit)}>
+      <div className={styles.AccountForm}>
+        <div className={styles.first}>
+          <div className={styles.inputMargin}>
+            <div className={styles.label}>
+              <label>First name</label> 
+              {' '}
+              <label>*</label>
+            </div>
+            <Field
+              name="firstName"
+              component={myInput}
+              label="First Name"
+              className={styles.input}
+            />
+          </div>
+          <div className={styles.inputMargin}>
+            <div className={styles.label}>
+              <label>Last name</label> 
+              {' '}
+              <label>*</label>
+            </div>
+            <Field
+              name="lastName"
+              component={myInput}
+              label="Last Name"
+              className={styles.input}
+            />
+          </div>
+          <div className={styles.inputMargin}>
+            <div className={styles.labelBirthDay}>
+              <label>Birth Day</label> 
+              {' '}
+              <label>*</label>
+            </div>
+            <Field
+              name="birthDay"
+              component={renderDatePicker}
+              placeholderText="MM/DD/YYYY"
+              className={styles.datePicker}
+            />
+          </div>
+        </div>
+        <div className={styles.second}>
+          <div className={styles.inputMargin}>
+            <div className={styles.label}>
+              <label>Email</label> 
+              {' '}
+              <label>*</label>
+            </div>
+            <Field
+              name="email"
+              component={myInput}
+              label="Email"
+              className={styles.input}
+            />
+          </div>
+          <div className={styles.inputMargin}>
+            <div className={styles.label}>
+              <label>Address</label> 
+              {' '}
+              <label>*</label>
+            </div>
+            <Field
+              name="address"
+              component={myInput}
+              label="Address"
+              className={styles.input}
+            />
+          </div>
+          <div>
+            <div className={styles.radioMargin}>
+              <label>Gender</label>
+            </div>
+            <div className={styles.radio}>
+              <label className={styles.container}>
+                <Field
+                  name="sex"
+                  component={myInput}
+                  type="radio"
+                  value="male"
+                  className={styles.radioItem}
+                />
+                <span className={styles.checkmark} />
 									Male
-								</label>
-								<label className={styles.container}>
-									<Field
-										name="sex"
-										component={myInput}
-										type="radio"
-										value="female"
-									/>
-									<span className={styles.checkmark} />
+              </label>
+              <label className={styles.container}>
+                <Field
+                  name="sex"
+                  component={myInput}
+                  type="radio"
+                  value="female"
+                />
+                <span className={styles.checkmark} />
 									Female
-								</label>
-							</div>
-						</div>
-						<div className={styles.btn}>
-							<button
-								type="submit"
-								disabled={pristine || submitting}
-								className={styles.btnProfileBack}
-							>
+              </label>
+            </div>
+          </div>
+          <div className={styles.btn}>
+            <NavLink to="/addUser/account">
+              <button
+                type="submit"
+              // disabled={pristine || submitting}
+                className={styles.btnProfileBack}
+              >
 								Back
-							</button>
-							<button
-								type="submit"
-								disabled={pristine || submitting}
-								className={styles.btnProfile}
-								onClick={submitData}
-							>
+              </button>
+            </NavLink>
+            <NavLink to="/addUser/contacts">
+              <button
+                type="submit"
+              // disabled={pristine || submitting}
+                className={styles.btnProfile}
+                onClick={() => { props.updatePage(3);}}
+              >
 								Forward
-							</button>
-						</div>
-					</div>
-				</div>
-			</form>
-		</div>
+              </button>
+            </NavLink>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 	);
 };
 
