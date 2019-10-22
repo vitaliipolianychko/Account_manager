@@ -1,24 +1,25 @@
 {
   "files": {
-    "main.css": "/Account_manager/static/css/main.e01d8177.chunk.css",
-    "main.js": "/Account_manager/static/js/main.112a72e8.chunk.js",
-    "main.js.map": "/Account_manager/static/js/main.112a72e8.chunk.js.map",
+    "main.css": "/Account_manager/static/css/main.602ca81a.chunk.css",
+    "main.js": "/Account_manager/static/js/main.f4532eea.chunk.js",
+    "main.js.map": "/Account_manager/static/js/main.f4532eea.chunk.js.map",
     "runtime-main.js": "/Account_manager/static/js/runtime-main.15b059d9.js",
     "runtime-main.js.map": "/Account_manager/static/js/runtime-main.15b059d9.js.map",
     "static/css/2.ff9ea1f9.chunk.css": "/Account_manager/static/css/2.ff9ea1f9.chunk.css",
-    "static/js/2.113ec563.chunk.js": "/Account_manager/static/js/2.113ec563.chunk.js",
-    "static/js/2.113ec563.chunk.js.map": "/Account_manager/static/js/2.113ec563.chunk.js.map",
+    "static/js/2.8a8797a2.chunk.js": "/Account_manager/static/js/2.8a8797a2.chunk.js",
+    "static/js/2.8a8797a2.chunk.js.map": "/Account_manager/static/js/2.8a8797a2.chunk.js.map",
     "index.html": "/Account_manager/index.html",
-    "precache-manifest.ae73de8e21a467567a92e00f87f7d5a7.js": "/Account_manager/precache-manifest.ae73de8e21a467567a92e00f87f7d5a7.js",
+    "precache-manifest.8e89ea5740bb59285697bf9e9ebd4a96.js": "/Account_manager/precache-manifest.8e89ea5740bb59285697bf9e9ebd4a96.js",
     "service-worker.js": "/Account_manager/service-worker.js",
     "static/css/2.ff9ea1f9.chunk.css.map": "/Account_manager/static/css/2.ff9ea1f9.chunk.css.map",
-    "static/css/main.e01d8177.chunk.css.map": "/Account_manager/static/css/main.e01d8177.chunk.css.map",
+    "static/css/main.602ca81a.chunk.css.map": "/Account_manager/static/css/main.602ca81a.chunk.css.map",
     "static/media/Close.svg": "/Account_manager/static/media/Close.4f65201f.svg",
     "static/media/Logo.svg": "/Account_manager/static/media/Logo.2551f83e.svg",
     "static/media/addUsers.svg": "/Account_manager/static/media/addUsers.7e9d623d.svg",
+    "static/media/calendar.svg": "/Account_manager/static/media/calendar.225e44e2.svg",
     "static/media/iconVisibility.svg": "/Account_manager/static/media/iconVisibility.73bb72e4.svg",
     "static/media/iconVisibilityOff.svg": "/Account_manager/static/media/iconVisibilityOff.90338587.svg",
     "static/media/listOfUsers.svg": "/Account_manager/static/media/listOfUsers.f41d10ed.svg",
-    "static/media/test.jpg": "/Account_manager/static/media/test.1a20d163.jpg"
+    "static/media/DatePicker.css": "/Account_manager/static/media/rectangle.7517ac3e.svg"
   }
 }
