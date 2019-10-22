@@ -9,6 +9,9 @@ import Paper from '@material-ui/core/Paper';
 import { connect } from 'react-redux';
 import delUser from './icons/Close.svg';
 import { onDeleteTask } from '../../redux/reducer';
+import defaultAvatar from './icons/listOfUsers.svg';
+
+
 
 const useStyles = makeStyles(() => ({
 	root: {
@@ -47,59 +50,64 @@ function CustomizedTables(props) {
 	const { Data, DeleteTask } = props;
 	const classes = useStyles();
 	const DataUser = Data.map(task => {
+		const {avatar} = task;
 		const { users } = task;
 		const { firstName } = task;
 		const { lastName } = task;
 		const { company } = task;
-		const data = { users, firstName, lastName, company };
+		const data = { avatar, users, firstName, lastName, company };
 		return data;
 	});
 	return (
-		<Paper className={classes.root}>
-			<Table className={classes.table}>
-				<TableHead>
-					<TableRow className={classes.backTableRoot}>
-						<TableCell align="left" variant="head">
+  <Paper className={classes.root}>
+    <Table className={classes.table}>
+      <TableHead>
+        <TableRow className={classes.backTableRoot}>
+          <TableCell align="left" variant="head">
+							Avatar
+          </TableCell>
+          <TableCell align="left" variant="head">
 							Name
-						</TableCell>
-						<TableCell align="left" variant="head">
+          </TableCell>
+          <TableCell align="left" variant="head">
 							first Name
-						</TableCell>
-						<TableCell align="left" variant="head">
+          </TableCell>
+          <TableCell align="left" variant="head">
 							last Name
-						</TableCell>
-						<TableCell align="left" variant="head">
+          </TableCell>
+          <TableCell align="left" variant="head">
 							company
-						</TableCell>
-					</TableRow>
-				</TableHead>
-				<TableBody>
-					{DataUser.map((task, index) => (
-						<TableRow key={task.id}>
-							<TableCell align="left">{task.users}</TableCell>
-							<TableCell align="left">{task.firstName}</TableCell>
-							<TableCell align="left">{task.lastName}</TableCell>
-							<TableCell align="left">{task.company}</TableCell>
-							<TableCell align="left">
-								<button
-									style={{
+          </TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {DataUser.map((task, index) => (
+          <TableRow key={task.id}>
+            <TableCell align="left"><img src={defaultAvatar} /></TableCell>
+            <TableCell align="left">{task.users}</TableCell>
+            <TableCell align="left">{task.firstName}</TableCell>
+            <TableCell align="left">{task.lastName}</TableCell>
+            <TableCell align="left">{task.company}</TableCell>
+            <TableCell align="left">
+            <button
+            style={{
 										border: 0,
 										outline: 'none',
 										cursor: 'pointer',
 										background: 'white',
 									}}
-									onClick={() => {
+            onClick={() => {
 										DeleteTask(index);
 									}}
-								>
-									<img src={delUser} alt="my image" />
-								</button>
-							</TableCell>
-						</TableRow>
+          >
+            <img src={delUser} alt="my image" />
+          </button>
+          </TableCell>
+          </TableRow>
 					))}
-				</TableBody>
-			</Table>
-		</Paper>
+      </TableBody>
+    </Table>
+  </Paper>
 	);
 }
 CustomizedTables = connect(

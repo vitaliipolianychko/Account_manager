@@ -18,12 +18,9 @@ color: #657C9A;
         }
 .second{
         flex-direction: column;
-        }
-.select{
-    width: 300px;
 }
 .lang{
-    width: 300px;
+    margin-bottom: 5px;
 }
 .btn{
     margin-top: 190px;
@@ -31,27 +28,6 @@ color: #657C9A;
     flex-direction: row;
     justify-content: space-between;
 }
-.btnContacts{
-    border: 0px;
-    height: 40px;
-    background: #5E97F3;  
-    color: white;
-    padding: 0px 15px;
-    cursor: pointer;
-}
-.btnContactsBack{
-    border: 0px;
-    height: 40px;
-    background: #C1CFE0;
-    color: white;
-    padding: 0px 15px; 
-    cursor: pointer;
-}
-.input{
-    width: 300px;
-    height: 40px;
-    background: #FFFFFF;
-}
 .inputMargin{
-    margin-bottom: 40px;
+    margin-bottom: 24px;
 }

@@ -7,8 +7,9 @@ import { NavLink } from "react-router-dom";
 import asyncValidate from '../../Validation/index';
 
 // Components
-import { myInput } from '../Input/Input';
+import { CustomInput } from '../Input/Input';
 import { renderDatePicker } from '../DatePicker/DatePicker';
+import {ButtonBack, ButtonForward} from '../Buttons/Buttons';
 
 // styles
 import styles from './ProfileForm.module.css';
@@ -92,7 +93,7 @@ let ProfileForm = props => {
             </div>
             <Field
               name="firstName"
-              component={myInput}
+              component={CustomInput}
               label="First Name"
               className={styles.input}
             />
@@ -105,7 +106,7 @@ let ProfileForm = props => {
             </div>
             <Field
               name="lastName"
-              component={myInput}
+              component={CustomInput}
               label="Last Name"
               className={styles.input}
             />
@@ -133,7 +134,7 @@ let ProfileForm = props => {
             </div>
             <Field
               name="email"
-              component={myInput}
+              component={CustomInput}
               label="Email"
               className={styles.input}
             />
@@ -146,7 +147,7 @@ let ProfileForm = props => {
             </div>
             <Field
               name="address"
-              component={myInput}
+              component={CustomInput}
               label="Address"
               className={styles.input}
             />
@@ -159,7 +160,7 @@ let ProfileForm = props => {
               <label className={styles.container}>
                 <Field
                   name="sex"
-                  component={myInput}
+                  component={CustomInput}
                   type="radio"
                   value="male"
                   className={styles.radioItem}
@@ -170,7 +171,7 @@ let ProfileForm = props => {
               <label className={styles.container}>
                 <Field
                   name="sex"
-                  component={myInput}
+                  component={CustomInput}
                   type="radio"
                   value="female"
                 />
@@ -181,23 +182,10 @@ let ProfileForm = props => {
           </div>
           <div className={styles.btn}>
             <NavLink to="/addUser/account">
-              <button
-                type="submit"
-              // disabled={pristine || submitting}
-                className={styles.btnProfileBack}
-              >
-								Back
-              </button>
+              <ButtonBack />
             </NavLink>
             <NavLink to="/addUser/contacts">
-              <button
-                type="submit"
-              // disabled={pristine || submitting}
-                className={styles.btnProfile}
-                onClick={() => { props.updatePage(3);}}
-              >
-								Forward
-              </button>
+              <ButtonForward onClick={() => { props.updatePage(3);}} />
             </NavLink>
           </div>
         </div>

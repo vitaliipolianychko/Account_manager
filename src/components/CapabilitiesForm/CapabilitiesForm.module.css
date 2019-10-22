@@ -10,6 +10,7 @@ font-weight: normal;
 font-size: 14px;
 line-height: 16px;
 color: #657C9A;
+background: #FAFCFF;
 }
 .first{
     display: flex;
@@ -23,40 +24,27 @@ color: #657C9A;
 .select{
     margin-bottom: 200px;
 }
-.textarea{
-    width: 300px;
-    height: 100px;
-}
 .skills{
     width: 300px;
     height: 45px;
-    margin-bottom: 150px;
+    margin-bottom: 180px;
 }
 .textArea{
-    width: 275px;
-    height: 40px;
+    width: 300px;
+    height: 100px;
+    border: 1px solid #E7F0FF;
+}
+.label{
+  margin-bottom: 5px;
+}
+.hobbiesContainer{
+  margin-bottom: 10px; 
 }
 .btn{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-top: 260px;
-}
-.btnCapabilities{
-    border: 0px;
-    height: 40px;
-    background: #4EE4A5;  
-    color: white;
-    padding: 0px 15px;
-    cursor: pointer;
-}
-.btnCapabilitiesBack{
-    border: 0px;
-    height: 40px;
-    background: #C1CFE0;
-    color: white;
-    padding: 0px 15px;
-    cursor: pointer;
 }
 .container {
     display: block;
@@ -66,9 +54,8 @@ color: #657C9A;
     cursor: pointer;
     user-select: none;
   }
-  
   /* Hide the browser's default checkbox */
-  .container input {
+.container input {
     position: absolute;
     opacity: 0;
     cursor: pointer;

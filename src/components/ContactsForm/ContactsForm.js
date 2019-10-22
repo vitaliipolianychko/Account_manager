@@ -7,11 +7,11 @@ import { NavLink } from "react-router-dom";
 import InputMask from 'react-input-mask';
 import Select from 'react-select';
 
-// Actions
-import { onAddUser } from '../../redux/reducer';
+
 
 // Components
-import { myInput } from '../Input/Input';
+import { CustomInput } from '../Input/Input';
+import {ButtonBack, ButtonForward} from '../Buttons/Buttons';
 
 // Validation Data
 import asyncValidate from '../../Validation/index';
@@ -75,9 +75,9 @@ const Input = props => (
   >
     {inputProps => (
       <Field
-        component={myInput}
+        component={CustomInput}
         className={styles.input}
-        name="phoneOne"
+        name={props.name}
         {...inputProps}
         type="tel"
         disableUnderline
@@ -86,95 +86,52 @@ const Input = props => (
   </InputMask>
 );
 
+const customStyles = {
+	option: (provided, state) => ({
+	  ...provided,
+	  color: state.isSelected ? ' #657C9A' : ' #657C9A',
+	  background: state.isSelected ? '#E7F0FF' : '#FFFFFF',
+	  background: state.isFocused ? '#E7F0FF' : '#FFFFFF',
+	  paddingTop: 10,
+	  borderRadius: 0,
+	  border: 'none',
+	}),
+	control: (base, state) => ({
+		...base,
+		border: '1px solid #C1CFE0',
+		boxShadow: 'none',
+		'&:hover': {
+			border: '1px solid #C1CFE0',
+		}
+	}),
+	singleValue: base=>({
+		...base,
+		color: '#657C9A',
+	}),
+  };
+
 const FormSelect = props => {
-	const { input, options } = props;
+	const { input, options, styles } = props;
 
 	return (
   <Select
     {...input}
+    components={{ DropdownIndicator: () => null, IndicatorSeparator:() => null, Placeholder:()=>null }}
+    menuIsOpen
     onChange={value => input.onChange(value)}
     onBlur={() => input.onBlur(input.value)}
     options={options}
-		/>
+    maxMenuHeight={170}
+    styles={styles}
+    theme={theme => ({
+		...theme,
+		borderRadius: 0,
+	  })}
+  />
 	);
 };
 
-const selectorLogin = formValueSelector('loginForm');
-const selectorProfile = formValueSelector('profileForm');
-const selectorContacts = formValueSelector('contactsForm');
 
-const mapStateToProps = state => {
-	const userNameValue = selectorLogin(state, 'userName');
-	const passwordValue = selectorLogin(state, 'password');
-	const confirmPasswordValue = selectorLogin(state, 'confirmPassword');
-	const firstNameValue = selectorProfile(state, 'firstName');
-	const lastNameValue = selectorProfile(state, 'lastName');
-	const emailValue = selectorProfile(state, 'email');
-	const addressValue = selectorProfile(state, 'address');
-	const sexValue = selectorProfile(state, 'sex');
-	const companyValue = selectorContacts(state, 'company');
-	const githubValue = selectorContacts(state, 'github');
-	const facebookValue = selectorContacts(state, 'facebook');
-	const languageValue = selectorContacts(state, 'language');
-	const faxValue = selectorContacts(state, 'fax');
-	const phoneOneValue = selectorContacts(state, 'phoneOne');
-
-	return {
-		userNameValue,
-		passwordValue,
-		confirmPasswordValue,
-		firstNameValue,
-		lastNameValue,
-		emailValue,
-		addressValue,
-		sexValue,
-		companyValue,
-		githubValue,
-		facebookValue,
-		languageValue,
-		faxValue,
-		phoneOneValue,
-	};
-};
-const mapDispatchToProps = dispatch => {
-	return {
-		AddUser: (
-			userName,
-			password,
-			confirmPassword,
-			firstName,
-			lastName,
-			email,
-			address,
-			sex,
-			company,
-			github,
-			facebook,
-			language,
-			fax,
-			phoneOne
-		) => {
-			dispatch(
-				onAddUser(
-					userName,
-					password,
-					confirmPassword,
-					firstName,
-					lastName,
-					email,
-					address,
-					sex,
-					company,
-					github,
-					facebook,
-					language,
-					fax,
-					phoneOne
-				)
-			);
-		},
-	};
-};
 
 // eslint-disable-next-line import/no-mutable-exports
 let ContactsForm = props => {
@@ -182,42 +139,9 @@ let ContactsForm = props => {
 		handleSubmit,
 		pristine,
 		submitting,
-		userNameValue,
-		passwordValue,
-		confirmPasswordValue,
-		firstNameValue,
-		lastNameValue,
-		emailValue,
-		addressValue,
-		sexValue,
-		companyValue,
-		githubValue,
-		facebookValue,
-		languageValue,
-		faxValue,
-		phoneOneValue,
-		AddUser,
 	} = props;
-	const submitData = () => {
-		AddUser(
-			userNameValue,
-			passwordValue,
-			confirmPasswordValue,
-			firstNameValue,
-			lastNameValue,
-			emailValue,
-			addressValue,
-			sexValue,
-			companyValue,
-			githubValue,
-			facebookValue,
-			languageValue,
-			faxValue,
-			phoneOneValue
-		);
-	};
 	return (
-  <form onSubmit={handleSubmit}>
+  <form onSubmit={handleSubmit(handleSubmit)}>
     <div className={styles.contactsForm}>
       <div className={styles.first}>
         <div className={styles.inputMargin}>
@@ -226,9 +150,8 @@ let ContactsForm = props => {
           </div>
           <Field
             name="company"
-            component={myInput}
+            component={CustomInput}
             label="Company"
-            className={styles.input}
           />
         </div>
         <div className={styles.inputMargin}>
@@ -237,9 +160,8 @@ let ContactsForm = props => {
           </div>
           <Field
             name="github"
-            component={myInput}
+            component={CustomInput}
             label="GitHub link"
-            className={styles.input}
           />
         </div>
         <div className={styles.inputMargin}>
@@ -248,61 +170,41 @@ let ContactsForm = props => {
           </div>
           <Field
             name="facebook"
-            component={myInput}
+            component={CustomInput}
             label="Facebook link"
-            className={styles.input}
           />
         </div>
         <div className={styles.inputMargin}>
+          <div className={styles.lang}>
+            <label>Main language</label>
+          </div>
           <Field
-            className={styles.lang}
             name="language"
             component={FormSelect}
             options={options}
+            styles={customStyles}
           />
         </div>
       </div>
       <div className={styles.second}>
         <span>Fax</span>
         <div className={styles.inputMargin}>
-          <Field
-            name="fax"
-            component={myInput}
-            label="fax"
-            className={styles.input}
-          />
+          <Input name="fax" />
         </div>
         <span>Phone#1</span>
         <div className={styles.inputMargin}>
-          <Input />
+          <Input name="phoneOne" />
         </div>
         <span>Phone#2</span>
         <div className={styles.inputMargin}>
-          <InputMask
-            name="phoneTwo"
-            mask="+7 (999) 999-99-99"
-            className={styles.input}
-          />
+          <Input name="phoneTwo" />
         </div>
         <div className={styles.btn}>
           <NavLink to="/addUser/profile">
-            <button
-              type="submit"
-              // disabled={pristine || submitting}
-              className={styles.btnContactsBack}
-            >
-							Back
-            </button>
+            <ButtonBack />
           </NavLink>
           <NavLink to="/addUser/capabilities">
-            <button
-              type="submit"
-              // disabled={pristine || submitting}
-              className={styles.btnContacts}
-              onClick={() => { props.updatePage(4);}}
-            >
-							Forward
-            </button>
+            <ButtonForward onClick={() => { props.updatePage(4);}} />
           </NavLink>
         </div>
       </div>
@@ -317,10 +219,5 @@ ContactsForm = reduxForm({
 	destroyOnUnmount: false,
 	asyncValidate,
 })(ContactsForm);
-
-ContactsForm = connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(ContactsForm);
 
 export default ContactsForm;

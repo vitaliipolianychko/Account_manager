@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap');
+
+input{
+    outline: none;
+    border: none;
+}
+.react-datepicker-wrapper{
+    border: 1px solid #E7F0FF;
+}
 .react-datepicker{
     border: 0px;
 }
@@ -13,7 +21,7 @@
     width: 200px;
 }
 .react-datepicker__current-month{
-    font-family: Roboto;
+font-family: Roboto;
 font-style: normal;
 font-weight: 500;
 font-size: 14px;
@@ -21,15 +29,23 @@ line-height: 16px;
 color: #475666;
 }
 .react-datepicker__navigation--next{
-    border: 2px solid #CED9E5;
-    box-sizing: border-box;
-    transform: matrix(-0.71, 0.71, 0.71, 0.71, 0, 0);
+    border: none;
+    background: url('./icons/rectangle.svg') no-repeat;
+    width: 15px;
+    margin-top: -2px;
+    transform: rotate(-90deg);
+    outline: none;
 }
 .react-datepicker__navigation--previous{
-    border: 2px solid #CED9E5;
-    box-sizing: border-box;
-    transform: rotate(45deg);
+    border: none;
+    margin-top: 4px;
+    margin-left: 5px;
+    width: 20px;
+    background: url('./icons/rectangle.svg') no-repeat;
+    transform: rotate(90deg);
+    outline: none;
 }
+
 .react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name{
     margin: 0;
     color: #475666;
@@ -53,4 +69,18 @@ color: #475666;
 .react-datepicker__day--selected:hover{
     background: #EAF1FD; 
 }
+.react-datepicker__day--keyboard-selected,
+.react-datepicker__month-text--keyboard-selected, 
+.react-datepicker__quarter-text--keyboard-selected{
+    background: #EAF1FD;
+}
+.react-datepicker__day--keyboard-selected:hover{
+    background: #EAF1FD; 
+}
+.react-datepicker__day--today, 
+.react-datepicker__month-text--today, 
+.react-datepicker__quarter-text--today{
+    font-weight: normal;
+}
+
 

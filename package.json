@@ -7,6 +7,7 @@
     "@material-ui/core": "^4.5.0",
     "date-time-picker": "^0.5.3",
     "history": "^4.10.1",
+    "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-date-picker": "^7.8.2",
     "react-datepicker": "^2.9.6",

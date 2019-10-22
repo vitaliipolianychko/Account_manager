@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
 import { NavLink } from "react-router-dom";
@@ -6,12 +6,10 @@ import { NavLink } from "react-router-dom";
 import asyncValidate from '../../Validation/index';
 
 // components
-import ImageAvatars from '../Avatar';
-import { myInput } from '../Input/Input';
-
-// icons
-import showPass from './icons/iconVisibilityOff.svg';
-import hiddenPass from './icons/iconVisibility.svg';
+import defaultAvatar from './listOfUsers.svg';
+import { UserInput } from '../Input/Input';
+import {PasswordInput} from '../PasswordInput/PasswordInput';
+import {ButtonForward} from '../Buttons/Buttons';
 
 // styles
 import styles from './LoginForm.module.css';
@@ -33,56 +31,54 @@ const validate = values => {
 	return errors;
 };
 
+
+
+const FileInput = ({ 
+  input,
+}) => {
+  return (
+    <input
+      onChange={event=>{input.onChange(event.target.files[0]);}}
+      type="file"
+      className={styles.inputfile}
+    />
+  );
+};
+
 const selector = formValueSelector('loginForm');
 
 const mapStateToProps = state => {
+  const avatarValue = selector(state, 'avatar');
 	const userNameValue = selector(state, 'userName');
 	const passwordValue = selector(state, 'password');
 	const confirmPasswordValue = selector(state, 'confirmPassword');
 	return {
+    avatarValue,
 		userNameValue,
 		passwordValue,
 		confirmPasswordValue,
 	};
 };
-/* const mapDispatchToProps = dispatch => {
-  return {
-    AddUser: (userName, password, confirmPassword) => {
-      dispatch(onAddUser(userName, password, confirmPassword));
-    },
-  };
-};
-*/
+
 
 // eslint-disable-next-line import/no-mutable-exports
 let LoginForm = props => {
-	const { handleSubmit, pristine, submitting } = props;
-	const [type, setType] = useState('password');
-	const [typeSecond, setTypeSecond] = useState('password');
-	console.log(props);
-	const checkPassword = () => {
-		if (type === 'password') {
-			setType('text');
-		} else {
-			setType('password');
-		}
-	};
-
-	const checkConfirmPassword = () => {
-		if (typeSecond === 'password') {
-			setTypeSecond('text');
-		} else {
-			setTypeSecond('password');
-		}
-	};
-
+  const { handleSubmit, pristine, submitting, avatarValue } = props;
 	return (
-  <div className={styles.body}>
-    <div className={styles.avatar}>
-      <ImageAvatars />
-    </div>
-
-    <form onSubmit={handleSubmit(handleSubmit)}>
+   
+  <form onSubmit={handleSubmit(handleSubmit)}>
+    <div className={styles.body}>
+      <div className={styles.avatar}>
+        <div>
+          <Field name="avatar" component={FileInput} />
+        </div>
+        <div>
+          <img
+            src={!avatarValue ? defaultAvatar : URL.createObjectURL(avatarValue)} 
+            style={{   width: '15em',	height: '15em',	border: '3px solid #5E97F3', borderRadius: '50%', objectFit: "cover" }}
+          />
+        </div>
+      </div>
       <div className={styles.form}>
         <div className={styles.inputMargin}>
           <div className={styles.label}>
@@ -91,11 +87,10 @@ let LoginForm = props => {
           </div>
           <Field
             name="userName"
-            component={myInput}
+            component={UserInput}
             className={styles.input}
           />
         </div>
-
         <div className={styles.inputMargin}>
           <div className={styles.label}>
             <label>Password</label>
@@ -103,28 +98,9 @@ let LoginForm = props => {
           </div>
           <Field
             name="password"
-            component={myInput}
-            type={type}
+            component={PasswordInput}
             className={styles.input}
           />
-          <span className={styles.icons}>
-            {type === 'password' && (
-            <input
-              type="image"
-              src={hiddenPass}
-              onClick={checkPassword}
-              style={{ outline: 'none' }}
-            />
-							)}
-            {type === 'text' && (
-            <input
-              type="image"
-              src={showPass}
-              onClick={checkPassword}
-              style={{ outline: 'none' }}
-            />
-							)}
-          </span>
         </div>
         <div className={styles.inputMargin}>
           <div className={styles.label}>
@@ -133,45 +109,20 @@ let LoginForm = props => {
           </div>
           <Field
             name="confirmPassword"
-            component={myInput}
-            type={typeSecond}
+            component={PasswordInput}
             className={styles.input}
           />
-          <span className={styles.icons}>
-            {typeSecond === 'password' && (
-            <input
-              type="image"
-              src={hiddenPass}
-              onClick={checkConfirmPassword}
-              style={{ outline: 'none' }}
-            />
-							)}
-            {typeSecond === 'text' && (
-            <input
-              type="image"
-              src={showPass}
-              onClick={checkConfirmPassword}
-              style={{ outline: 'none' }}
-            />
-							)}
-          </span>
         </div>
         <div />
         <div className={styles.btn}>
           <NavLink to="/addUser/profile">
-            <button
-              type="submit"
-              className={styles.btnSubmit}
-			  // disabled={pristine || submitting}
-              onClick={() => { props.updatePage(2);}}
-            >
-							Forward
-            </button>
+            <ButtonForward onClick={props.updatePage(2)} />
           </NavLink>
         </div>
       </div>
-    </form>
-  </div>
+    </div>
+  </form>
+
 	);
 };
 
