@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
 import { NavLink } from "react-router-dom";
 
@@ -16,9 +16,9 @@ import styles from './ProfileForm.module.css';
 
 const validate = values => {
 	const errors = {};
-	const requiredFields = ['firstName', 'lastName', 'email', 'address', 'sex'];
+	const requiredFields = ['firstName', 'lastName', 'email', 'birthDay', 'address', 'sex'];
 	requiredFields.forEach(field => {
-		if (!values[field]) {
+	if (!values[field]) {
 			errors[field] = 'Required';
 		}
 	});
@@ -30,11 +30,23 @@ const validate = values => {
 	}
 	return errors;
 };
+
+  const selectorProfile = formValueSelector('profileForm');
+  const mapStateToProps = state => {
+  const firstNameValue = selectorProfile(state, 'firstName');
+	const lastNameValue = selectorProfile(state, 'lastName');
+  const emailValue = selectorProfile(state, 'email');
+  const birthDayValue = selectorProfile(state, 'birthDay');
+	const addressValue = selectorProfile(state, 'address');
+  const sexValue = selectorProfile(state, 'sex');
+  return {
+    firstNameValue,	lastNameValue, emailValue, birthDayValue, addressValue, sexValue
+  };
+};
 // eslint-disable-next-line import/no-mutable-exports
 
 let ProfileForm = props => {
-	const {	handleSubmit } = props;
-
+	const {	handleSubmit, firstNameValue, lastNameValue, emailValue, birthDayValue, addressValue, sexValue  } = props;
 	return (
   <div>
     <form onSubmit={handleSubmit(handleSubmit)}>
@@ -139,7 +151,7 @@ let ProfileForm = props => {
             <NavLink to="/addUser/account">
               <ButtonBack />
             </NavLink>
-            <NavLink to="/addUser/contacts">
+            <NavLink to="/addUser/contacts" className={!firstNameValue || !lastNameValue || !emailValue || !birthDayValue || !addressValue || !sexValue ? styles.btnDisable : null}>
               <ButtonForward onClick={() => { props.updatePage(3);}} />
             </NavLink>
           </div>
@@ -157,5 +169,6 @@ ProfileForm = reduxForm({
 	asyncValidate,
 })(ProfileForm);
 
+ProfileForm = connect(mapStateToProps)(ProfileForm);
 
 export default ProfileForm;

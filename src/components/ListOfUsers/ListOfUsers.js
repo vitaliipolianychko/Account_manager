@@ -1,37 +1,15 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 import { connect } from 'react-redux';
+import { NavLink } from "react-router-dom";
 import delUser from './icons/Close.svg';
 import { onDeleteTask } from '../../redux/reducer';
-import defaultAvatar from './icons/listOfUsers.svg';
+
+
+import styles from './ListOfUsers.module.css';
 
 
 
-const useStyles = makeStyles(() => ({
-	root: {
-		width: '80%',
-		overflowX: 'auto',
-		marginTop: 30,
-		marginLeft: 'auto',
-		marginRight: 'auto',
-	},
-	table: {
-		minWidth: 700,
-	},
-	backTableRoot: {
-		background: 'white',
-		color: 'silver',
-	},
-	link: {
-		textDecoration: 'none',
-	},
-}));
+
 
 const mapStateToProps = state => {
 	return {
@@ -48,66 +26,61 @@ const mapDispatchToProps = dispatch => {
 
 function CustomizedTables(props) {
 	const { Data, DeleteTask } = props;
-	const classes = useStyles();
 	const DataUser = Data.map(task => {
 		const {avatar} = task;
 		const { users } = task;
-		const { firstName } = task;
-		const { lastName } = task;
 		const { company } = task;
-		const data = { avatar, users, firstName, lastName, company };
+		const {email} = task;
+		const data = { avatar, users, company, email };
 		return data;
 	});
+	console.log(DataUser);
 	return (
-  <Paper className={classes.root}>
-    <Table className={classes.table}>
-      <TableHead>
-        <TableRow className={classes.backTableRoot}>
-          <TableCell align="left" variant="head">
-							Avatar
-          </TableCell>
-          <TableCell align="left" variant="head">
-							Name
-          </TableCell>
-          <TableCell align="left" variant="head">
-							first Name
-          </TableCell>
-          <TableCell align="left" variant="head">
-							last Name
-          </TableCell>
-          <TableCell align="left" variant="head">
-							company
-          </TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {DataUser.map((task, index) => (
-          <TableRow key={task.id}>
-            <TableCell align="left"><img src={defaultAvatar} /></TableCell>
-            <TableCell align="left">{task.users}</TableCell>
-            <TableCell align="left">{task.firstName}</TableCell>
-            <TableCell align="left">{task.lastName}</TableCell>
-            <TableCell align="left">{task.company}</TableCell>
-            <TableCell align="left">
-              <button
-                style={{
-										border: 0,
-										outline: 'none',
-										cursor: 'pointer',
-										background: 'white',
-									}}
-                onClick={() => {
-										DeleteTask(index);
-									}}
-              >
-                <img src={delUser} alt="my image" />
-              </button>
-            </TableCell>
-          </TableRow>
-					))}
-      </TableBody>
-    </Table>
-  </Paper>
+  <table className={styles.tableHead}>
+    <tbody>
+      <tr className={styles.trHead}>
+        <td className={styles.cell}> Name </td>
+        <td className={styles.cell}> Company </td>
+        <td className={styles.cell}> Contacts </td>
+        <td className={styles.cell}> Last Update </td>
+        <td className={styles.cell}>  </td>
+      </tr>
+      {DataUser.length !== 0 ? 
+      DataUser.map((task, index) => (
+        <tr key={task.id} className={styles.trTable}>
+          <td className={styles.cell}>{task.users}</td>
+          <td className={styles.cell}>{task.company}</td>
+          <td className={styles.cell}>{task.email}</td>
+          <td className={styles.cell}>just now</td>
+          <td className={styles.cell}>
+            <button
+              style={{
+					border: 0,
+					outline: 'none',
+					cursor: 'pointer',
+					background: 'white',
+				}}
+              onClick={() => {
+					DeleteTask(index);
+				}}
+            >
+              <img src={delUser} alt="my image" />
+            </button>
+          </td>
+        </tr>
+					))
+				: (
+  		<tr>
+    <span className={styles.noUsers}> No users here :( </span>
+    <NavLink to="/addUser/account"> 
+      <button type="submit" className={styles.createUser}>
+		  Create new user
+      </button>
+    </NavLink>
+  </tr>
+    )}
+    </tbody>
+  </table>
 	);
 }
 CustomizedTables = connect(

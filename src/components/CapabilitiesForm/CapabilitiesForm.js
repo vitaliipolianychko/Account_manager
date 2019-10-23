@@ -35,6 +35,19 @@ const skill = [
 	{ value: 'Firebase', label: 'Firebase' },
 ];
 
+const validate = values => {
+	const errors = {};
+	const requiredFields = [
+		'skills'
+	];
+	requiredFields.forEach(field => {
+		if (!values[field]) {
+			errors[field] = 'Required';
+		}
+	});
+	return errors;
+};
+
 const MultiCustomStyles = {
 	option: (provided, state) => ({
 	  ...provided,
@@ -379,7 +392,7 @@ I just want to play games,
           <NavLink to="/addUser/contacts">
             <ButtonBack />
           </NavLink>
-          <ButtonSubmit onClick={submitData} />
+          <ButtonSubmit onClick={submitData} className={!skillsValue ? styles.btnDisable : styles.btnSubmit} />
         </div>
       </div>
     </div>
@@ -389,7 +402,8 @@ I just want to play games,
 }
 
 CapabilitiesForm = reduxForm({
-	form: 'capabilitiesForm',
+  form: 'capabilitiesForm',
+  validate,
 	destroyOnUnmount: false,
 })(CapabilitiesForm);
 

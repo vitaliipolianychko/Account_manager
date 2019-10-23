@@ -19,7 +19,7 @@ export const ButtonForward=(props)=>{
 
 export const ButtonSubmit =(props) => {
     return (
-      <button type="submit" className={styles.btnSubmit} onClick={props.onClick}>
+      <button type="submit" className={props.className} onClick={props.onClick}>
         FInish
       </button> 
     );

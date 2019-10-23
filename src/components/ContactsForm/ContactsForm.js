@@ -48,23 +48,14 @@ const options = [
 const validate = values => {
 	const errors = {};
 	const requiredFields = [
-		'firstName',
-		'lastName',
-		'email',
-		'favoriteColor',
-		'notes',
+		'company',
+		'language'
 	];
 	requiredFields.forEach(field => {
 		if (!values[field]) {
 			errors[field] = 'Required';
 		}
 	});
-	if (
-		values.email &&
-		!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-	) {
-		errors.email = 'Invalid email address';
-	}
 	return errors;
 };
 const Input = props => (
@@ -130,10 +121,22 @@ const FormSelect = props => {
 	);
 };
 
+const selectorContacts = formValueSelector('contactsForm');
+
+const mapStateToProps = state => {
+	const companyValue = selectorContacts(state, 'company');
+	const languageValue = selectorContacts(state, 'language');
+
+	return {
+		companyValue,
+		languageValue,
+	};
+};
+
 // eslint-disable-next-line import/no-mutable-exports
 let ContactsForm = props => {
 	const {
-		handleSubmit
+		handleSubmit, companyValue, languageValue
 	} = props;
 	return (
   <form onSubmit={handleSubmit(handleSubmit)}>
@@ -198,7 +201,7 @@ let ContactsForm = props => {
           <NavLink to="/addUser/profile">
             <ButtonBack />
           </NavLink>
-          <NavLink to="/addUser/capabilities">
+          <NavLink to="/addUser/capabilities" className={!companyValue || !languageValue ? styles.btnDisable : null}>
             <ButtonForward onClick={() => { props.updatePage(4);}} />
           </NavLink>
         </div>
@@ -215,4 +218,5 @@ ContactsForm = reduxForm({
 	asyncValidate,
 })(ContactsForm);
 
+ContactsForm = connect(mapStateToProps)(ContactsForm);
 export default ContactsForm;

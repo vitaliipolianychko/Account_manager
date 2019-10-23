@@ -28,6 +28,9 @@ color: #657C9A;
     flex-direction: row;
     justify-content: space-between;
 }
+.btnDisable{
+    pointer-events: none;  
+  }
 .inputMargin{
     margin-bottom: 24px;
 }

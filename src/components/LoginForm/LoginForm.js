@@ -2,8 +2,6 @@ import React from 'react';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
 import { NavLink } from "react-router-dom";
-// Validation Data
-import asyncValidate from '../../Validation/index';
 
 // components
 import defaultAvatar from './listOfUsers.svg';
@@ -15,8 +13,9 @@ import {ButtonForward} from '../Buttons/Buttons';
 // styles
 import styles from './LoginForm.module.css';
 
+
 const validate = values => {
-	const errors = {};
+  const errors ={};
 	const requiredFields = ['userName', 'password', 'confirmPassword'];
 	requiredFields.forEach(field => {
 		if (!values[field]) {
@@ -28,9 +27,11 @@ const validate = values => {
 	}
 	if (values.password !== values.confirmPassword) {
 		errors.confirmPassword = "Password's don't match ";
-	}
-	return errors;
+  }
+  return errors;
 };
+
+
 
 
 
@@ -49,19 +50,23 @@ const FileInput = ({
 const selector = formValueSelector('loginForm');
 
 const mapStateToProps = state => {
+  const userNameValue = selector(state, 'userName');
+  const passwordValue = selector(state, 'password');
+  const confirmPasswordValue = selector(state, 'confirmPassword');
   const avatarValue = selector(state, 'avatar');
 	return {
-    avatarValue,
+    avatarValue, userNameValue, passwordValue, confirmPasswordValue
 	};
 };
 
 
 // eslint-disable-next-line import/no-mutable-exports
 let LoginForm = props => {
-  const { handleSubmit, pristine, submitting, avatarValue } = props;
-
+  const { handleSubmit, avatarValue, userNameValue, passwordValue, confirmPasswordValue } = props;
+  const nextPage = () => {
+    props.updatePage(2);
+};
 	return (
-   
   <form onSubmit={handleSubmit(handleSubmit)}>
     <div className={styles.body}>
       <div className={styles.avatar}>
@@ -113,9 +118,9 @@ let LoginForm = props => {
         </div>
         <div />
         <div className={styles.btn}>
-          <NavLink to="/addUser/profile">
-            <ButtonForward onClick={() => {props.updatePage(2);}} />
-          </NavLink>
+          <NavLink to="/addUser/profile" className={!userNameValue || !passwordValue || !confirmPasswordValue || (passwordValue!==confirmPasswordValue) ? styles.btnDisable : null}> 
+            <ButtonForward onClick={nextPage} />
+          </NavLink> 
         </div>
       </div>
     </div>
@@ -127,8 +132,7 @@ let LoginForm = props => {
 LoginForm = reduxForm({
 	form: 'loginForm', // a unique identifier for this form
 	destroyOnUnmount: false,
-	validate,
-	asyncValidate,
+  validate,
 })(LoginForm);
 LoginForm = connect(mapStateToProps)(LoginForm);
 

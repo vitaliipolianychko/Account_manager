@@ -46,6 +46,24 @@ background: #FAFCFF;
     justify-content: space-between;
     margin-top: 260px;
 }
+.btnDisable{
+  border: 0px;
+  height: 40px;
+  background: #4EE4A5;  
+  color: white;
+  padding: 0px 15px;
+  pointer-events: none; 
+  outline: none; 
+}
+.btnSubmit{
+  border: 0px;
+  height: 40px;
+  background: #4EE4A5;  
+  color: white;
+  padding: 0px 15px;
+  cursor: pointer;
+  outline: none;
+}
 .container {
     display: block;
     position: relative;
