@@ -89,20 +89,20 @@ function CustomizedTables(props) {
             <TableCell align="left">{task.lastName}</TableCell>
             <TableCell align="left">{task.company}</TableCell>
             <TableCell align="left">
-            <button
-            style={{
+              <button
+                style={{
 										border: 0,
 										outline: 'none',
 										cursor: 'pointer',
 										background: 'white',
 									}}
-            onClick={() => {
+                onClick={() => {
 										DeleteTask(index);
 									}}
-          >
-            <img src={delUser} alt="my image" />
-          </button>
-          </TableCell>
+              >
+                <img src={delUser} alt="my image" />
+              </button>
+            </TableCell>
           </TableRow>
 					))}
       </TableBody>

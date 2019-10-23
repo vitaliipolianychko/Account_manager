@@ -7,6 +7,7 @@ import asyncValidate from '../../Validation/index';
 
 // components
 import defaultAvatar from './listOfUsers.svg';
+import addAvatar from './add.svg';
 import { UserInput } from '../Input/Input';
 import {PasswordInput} from '../PasswordInput/PasswordInput';
 import {ButtonForward} from '../Buttons/Buttons';
@@ -49,14 +50,8 @@ const selector = formValueSelector('loginForm');
 
 const mapStateToProps = state => {
   const avatarValue = selector(state, 'avatar');
-	const userNameValue = selector(state, 'userName');
-	const passwordValue = selector(state, 'password');
-	const confirmPasswordValue = selector(state, 'confirmPassword');
 	return {
     avatarValue,
-		userNameValue,
-		passwordValue,
-		confirmPasswordValue,
 	};
 };
 
@@ -64,20 +59,23 @@ const mapStateToProps = state => {
 // eslint-disable-next-line import/no-mutable-exports
 let LoginForm = props => {
   const { handleSubmit, pristine, submitting, avatarValue } = props;
+
 	return (
    
   <form onSubmit={handleSubmit(handleSubmit)}>
     <div className={styles.body}>
       <div className={styles.avatar}>
         <div>
-          <Field name="avatar" component={FileInput} />
-        </div>
-        <div>
           <img
             src={!avatarValue ? defaultAvatar : URL.createObjectURL(avatarValue)} 
-            style={{   width: '15em',	height: '15em',	border: '3px solid #5E97F3', borderRadius: '50%', objectFit: "cover" }}
+            style={{   width: '13em',	height: '13em',	border: '3px solid #5E97F3', borderRadius: '50%', objectFit: "cover" }}
           />
         </div>
+        <label className={styles.customFileUpload}>
+          <Field name="avatar" component={FileInput} />
+          <img src={addAvatar} className={styles.addAvatarLabel} />
+          add avatar
+        </label>
       </div>
       <div className={styles.form}>
         <div className={styles.inputMargin}>
@@ -116,7 +114,7 @@ let LoginForm = props => {
         <div />
         <div className={styles.btn}>
           <NavLink to="/addUser/profile">
-            <ButtonForward onClick={props.updatePage(2)} />
+            <ButtonForward onClick={() => {props.updatePage(2);}} />
           </NavLink>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, reduxForm, formValueSelector } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { NavLink } from "react-router-dom";
 
@@ -30,56 +30,11 @@ const validate = values => {
 	}
 	return errors;
 };
-const selectorDo = formValueSelector('loginForm');
-const selector = formValueSelector('profileForm');
-
-const mapStateToProps = state => {
-	const userNameValue = selectorDo(state, 'userName');
-	const passwordValue = selectorDo(state, 'password');
-	const confirmPasswordValue = selectorDo(state, 'confirmPassword');
-	const firstNameValue = selector(state, 'firstName');
-	const lastNameValue = selector(state, 'lastName');
-	const emailValue = selector(state, 'email');
-	const addressValue = selector(state, 'address');
-	const sexValue = selector(state, 'sex');
-	const birthDayValue = selector(state, 'birthDay');
-	return {
-		userNameValue,
-		passwordValue,
-		confirmPasswordValue,
-		firstNameValue,
-		lastNameValue,
-		emailValue,
-		addressValue,
-		sexValue,
-		birthDayValue,
-	};
-};
-/* const mapDispatchToProps = dispatch => {
-  return {
-    AddUser: (userName, password, confirmPassword, firstName, lastName, email, address, sex) => {
-      dispatch(onAddUser(userName, password, confirmPassword, firstName, lastName, email, address, sex));
-    },
-  };
-};
-*/
 // eslint-disable-next-line import/no-mutable-exports
 
 let ProfileForm = props => {
-	const {
-		handleSubmit,
-		pristine,
-		submitting,
-		firstNameValue,
-		lastNameValue,
-		emailValue,
-		addressValue,
-		sexValue,
-		birthDayValue,
-	} = props;
-	const submitData = () => {
-		alert(`${birthDayValue} `);
-	};
+	const {	handleSubmit } = props;
+
 	return (
   <div>
     <form onSubmit={handleSubmit(handleSubmit)}>
@@ -202,9 +157,5 @@ ProfileForm = reduxForm({
 	asyncValidate,
 })(ProfileForm);
 
-ProfileForm = connect(
-	mapStateToProps
-	/* mapDispatchToProps */
-)(ProfileForm);
 
 export default ProfileForm;

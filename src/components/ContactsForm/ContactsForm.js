@@ -112,7 +112,6 @@ const customStyles = {
 
 const FormSelect = props => {
 	const { input, options, styles } = props;
-
 	return (
   <Select
     {...input}
@@ -131,14 +130,10 @@ const FormSelect = props => {
 	);
 };
 
-
-
 // eslint-disable-next-line import/no-mutable-exports
 let ContactsForm = props => {
 	const {
-		handleSubmit,
-		pristine,
-		submitting,
+		handleSubmit
 	} = props;
 	return (
   <form onSubmit={handleSubmit(handleSubmit)}>

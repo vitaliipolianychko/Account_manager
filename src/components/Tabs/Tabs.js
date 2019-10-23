@@ -16,7 +16,6 @@ class Tabs extends Component {
     this.state = {  
         page: 1, 
     };
-
   }
 
   updatePage = (value) => {
@@ -37,13 +36,13 @@ class Tabs extends Component {
         <div>
           <Switch>
             <Route exact path={`${path}`} render={() => <Redirect to={`${path}/account`} />} />
-            <Route path={`${path}/account`} exact render={() => <LoginForm updatePage={this.updatePage} />} />
+            <Route path={`${path}/account`} render={() => <LoginForm updatePage={this.updatePage} />} />
             <Route path={`${path}/profile`} render={()=> <ProfileForm updatePage={this.updatePage} />} />
             <Route path={`${path}/contacts`} render={()=> <ContactsForm updatePage={this.updatePage} />} />
             <Route path={`${path}/capabilities`} component={CapabilitiesForm} />
           </Switch>
         </div>
-      </div>
+      </div> 
     );
   }
 }
