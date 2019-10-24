@@ -26,8 +26,10 @@
     height: 95px;
 }
 .noUsers{
-    width: 100%;
-    border: 1px solid black;
+    margin: 0 auto;
+    display:flex;
+    flex-direction: column;
+    width: 250px;
     margin-top: 200px;
     text-align: center;
     font-family:'Roboto';
@@ -35,13 +37,22 @@
     font-weight: bold;
     font-size: 35px;
     line-height: 41px;
-    text-align: center;
     color: #9BB0CB;
 }
 .createUser{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0 auto;
+    margin-top: 65px;
     background: #5E97F3;
     width: 160px;
     height: 40px;
-    color: white;
     cursor: pointer;
+    outline: none;
+    border: none;
 }

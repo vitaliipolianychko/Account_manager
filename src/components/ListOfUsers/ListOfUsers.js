@@ -24,6 +24,7 @@ const mapDispatchToProps = dispatch => {
 	};
 };
 
+
 function CustomizedTables(props) {
 	const { Data, DeleteTask } = props;
 	const DataUser = Data.map(task => {
@@ -34,53 +35,67 @@ function CustomizedTables(props) {
 		const data = { avatar, users, company, email };
 		return data;
 	});
-	console.log(DataUser);
 	return (
-  <table className={styles.tableHead}>
-    <tbody>
-      <tr className={styles.trHead}>
-        <td className={styles.cell}> Name </td>
-        <td className={styles.cell}> Company </td>
-        <td className={styles.cell}> Contacts </td>
-        <td className={styles.cell}> Last Update </td>
-        <td className={styles.cell}>  </td>
-      </tr>
-      {DataUser.length !== 0 ? 
-      DataUser.map((task, index) => (
-        <tr key={task.id} className={styles.trTable}>
-          <td className={styles.cell}>{task.users}</td>
-          <td className={styles.cell}>{task.company}</td>
-          <td className={styles.cell}>{task.email}</td>
-          <td className={styles.cell}>just now</td>
-          <td className={styles.cell}>
-            <button
-              style={{
+  <div>
+    {DataUser.length !== 0 ? (
+      <table className={styles.tableHead}>
+        <tbody>
+          <tr className={styles.trHead}>
+            <td className={styles.cell}> Name </td>
+            <td className={styles.cell}> Company </td>
+            <td className={styles.cell}> Contacts </td>
+            <td className={styles.cell}> Last Update </td>
+            <td className={styles.cell}>  </td>
+          </tr>
+
+          {DataUser.map((task, index) => (
+            <tr key={task.id} className={styles.trTable}>
+              <td className={styles.cell}>{task.users}</td>
+              <td className={styles.cell}>{task.company}</td>
+              <td className={styles.cell}>{task.email}</td>
+              <td className={styles.cell}>just now</td>
+              <td className={styles.cell}>
+                <button
+                  style={{
 					border: 0,
 					outline: 'none',
 					cursor: 'pointer',
 					background: 'white',
 				}}
-              onClick={() => {
+                  onClick={() => {
 					DeleteTask(index);
 				}}
-            >
-              <img src={delUser} alt="my image" />
-            </button>
-          </td>
-        </tr>
-					))
-				: (
-  		<tr>
-    <span className={styles.noUsers}> No users here :( </span>
-    <NavLink to="/addUser/account"> 
-      <button type="submit" className={styles.createUser}>
-		  Create new user
-      </button>
-    </NavLink>
-  </tr>
-    )}
-    </tbody>
-  </table>
+                >
+                  <img src={delUser} alt="my image" />
+                </button>
+              </td>
+            </tr>
+					))}
+        </tbody>
+      </table>
+)
+  : (
+    <div>
+      <table className={styles.tableHead}> 
+        <tbody>
+          <tr className={styles.trHead}>
+            <td className={styles.cell}> Name </td>
+            <td className={styles.cell}> Company </td>
+            <td className={styles.cell}> Contacts </td>
+            <td className={styles.cell}> Last Update </td>
+            <td className={styles.cell}>  </td>
+          </tr>
+        </tbody>
+      </table>
+      <div className={styles.noUsers}>
+        <span>No users here :(</span> 
+        <NavLink to="/addUser/account">
+          <button className={styles.createUser}>Create new user</button>
+        </NavLink>
+      </div>
+    </div>
+  )}
+  </div>
 	);
 }
 CustomizedTables = connect(
