@@ -3,6 +3,7 @@ import showPass from './icons/iconVisibilityOff.svg';
 import hiddenPass from './icons/iconVisibility.svg';
 // styles
 import styles from './styles.module.css';
+import { ErrorMessage } from '../ErrorMessage';
 
 export const PasswordInput = props => {
 	const { input, meta } = props;
@@ -29,9 +30,7 @@ export const PasswordInput = props => {
 					/>
 				</div>
 			</div>
-			{meta.error && meta.touched && (
-				<p className={styles.error}>{meta.error}</p>
-			)}
+			<ErrorMessage meta={meta} />
 		</>
 	);
 };

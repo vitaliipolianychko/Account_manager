@@ -1,5 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
+import { ErrorMessage } from '../ErrorMessage';
 import s from './styles.module.css';
 
 export const StylesSelect = {
@@ -45,9 +46,7 @@ export const CustomSelect = props => {
 					borderRadius: 0,
 				})}
 			/>
-			{meta.error && meta.touched && (
-				<div className={s.error}>{meta.error}</div>
-			)}
+			<ErrorMessage meta={meta} />
 		</>
 	);
 };

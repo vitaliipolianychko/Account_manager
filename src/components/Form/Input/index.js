@@ -1,4 +1,5 @@
 import React from 'react';
+import { ErrorMessage } from '../ErrorMessage';
 // styles
 import styles from './styles.module.css';
 
@@ -9,7 +10,6 @@ export const CustomInput = props => {
 		meta.touched && meta.error
 			? `${classType} ${styles.errorInput}`
 			: classType;
-	console.log(className);
 	return (
 		<>
 			<input
@@ -18,9 +18,7 @@ export const CustomInput = props => {
 				placeholder={placeholder}
 				className={className}
 			/>
-			{meta.error && meta.touched && (
-				<div className={styles.error}>{meta.error}</div>
-			)}
+			<ErrorMessage meta={meta} />
 		</>
 	);
 };
