@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/Account_manager/static/css/main.12567642.chunk.css",
-    "main.js": "/Account_manager/static/js/main.d4250398.chunk.js",
-    "main.js.map": "/Account_manager/static/js/main.d4250398.chunk.js.map",
+    "main.css": "/Account_manager/static/css/main.7e4519d9.chunk.css",
+    "main.js": "/Account_manager/static/js/main.12d9b133.chunk.js",
+    "main.js.map": "/Account_manager/static/js/main.12d9b133.chunk.js.map",
     "runtime-main.js": "/Account_manager/static/js/runtime-main.15b059d9.js",
     "runtime-main.js.map": "/Account_manager/static/js/runtime-main.15b059d9.js.map",
     "static/css/2.ff9ea1f9.chunk.css": "/Account_manager/static/css/2.ff9ea1f9.chunk.css",
-    "static/js/2.a1521eff.chunk.js": "/Account_manager/static/js/2.a1521eff.chunk.js",
-    "static/js/2.a1521eff.chunk.js.map": "/Account_manager/static/js/2.a1521eff.chunk.js.map",
+    "static/js/2.b1204f5e.chunk.js": "/Account_manager/static/js/2.b1204f5e.chunk.js",
+    "static/js/2.b1204f5e.chunk.js.map": "/Account_manager/static/js/2.b1204f5e.chunk.js.map",
     "index.html": "/Account_manager/index.html",
-    "precache-manifest.3ebaad00c26acd7e92eb8abdcd6892d3.js": "/Account_manager/precache-manifest.3ebaad00c26acd7e92eb8abdcd6892d3.js",
+    "precache-manifest.a7de3cbe8e193805c7fa846cd38bd535.js": "/Account_manager/precache-manifest.a7de3cbe8e193805c7fa846cd38bd535.js",
     "service-worker.js": "/Account_manager/service-worker.js",
     "static/css/2.ff9ea1f9.chunk.css.map": "/Account_manager/static/css/2.ff9ea1f9.chunk.css.map",
-    "static/css/main.12567642.chunk.css.map": "/Account_manager/static/css/main.12567642.chunk.css.map",
+    "static/css/main.7e4519d9.chunk.css.map": "/Account_manager/static/css/main.7e4519d9.chunk.css.map",
     "static/media/Close.svg": "/Account_manager/static/media/Close.4f65201f.svg",
     "static/media/Logo.svg": "/Account_manager/static/media/Logo.2551f83e.svg",
     "static/media/add.svg": "/Account_manager/static/media/add.0e7d318b.svg",
@@ -21,6 +21,6 @@
     "static/media/iconVisibility.svg": "/Account_manager/static/media/iconVisibility.73bb72e4.svg",
     "static/media/iconVisibilityOff.svg": "/Account_manager/static/media/iconVisibilityOff.90338587.svg",
     "static/media/listOfUsers.svg": "/Account_manager/static/media/listOfUsers.f41d10ed.svg",
-    "static/media/DatePicker.css": "/Account_manager/static/media/rectangle.7517ac3e.svg"
+    "static/media/style.css": "/Account_manager/static/media/rectangle.7517ac3e.svg"
   }
 }
