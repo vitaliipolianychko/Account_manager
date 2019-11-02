@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-
+import Header from './components/Form/Header';
 // Pages
-import AddUser from './Pages/AddUser/AddUser';
-import ListUsers from './Pages/ListUsers/ListUsers';
+import AddUser from './Pages/AddUser';
+import ListUsers from './Pages/ListUsers';
 
 class App extends Component {
 	render() {
 		return (
-  <Switch>
-    <Route exact path="/" render={() => <Redirect to="/listUsers" />} />
-    <Route path="/addUser" component={AddUser} />
-    <Route path="/listUsers" component={ListUsers} />
-  </Switch>
+			<>
+				<Header />
+				<Switch>
+					<Route path="/addUser" component={AddUser} />
+					<Route path="/listUsers" component={ListUsers} />
+					<Redirect to="/listUsers" />
+				</Switch>
+			</>
 		);
 	}
 }

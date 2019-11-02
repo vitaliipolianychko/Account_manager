@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap');
+
+input{
+    outline: none;
+    border: none;
+}
+.react-datepicker-wrapper{
+    border: 1px solid #E7F0FF;
+}
+.react-datepicker{
+    border: 0px;
+}
+.react-datepicker__week,.react-datepicker__day-names, .react-datepicker__week,.react-datepicker__current-month{
+    background: white;
+}
+.react-datepicker__header{
+    background: white;
+    border-bottom: 0px;
+}
+.react-datepicker__month-container{
+    width: 200px;
+}
+.react-datepicker__current-month{
+font-family: Roboto;
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 16px;
+color: #475666;
+}
+.react-datepicker__navigation--next{
+    border: none;
+    background: url('./icons/rectangle.svg') no-repeat;
+    width: 15px;
+    margin-top: -2px;
+    transform: rotate(-90deg);
+    outline: none;
+}
+.react-datepicker__navigation--previous{
+    border: none;
+    margin-top: 4px;
+    margin-left: 5px;
+    width: 20px;
+    background: url('./icons/rectangle.svg') no-repeat;
+    transform: rotate(90deg);
+    outline: none;
+}
+
+.react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name{
+    margin: 0;
+    color: #475666;
+}
+.react-datepicker__day--selected,
+.react-datepicker__day--in-selecting-range,
+.react-datepicker__day--in-range,
+.react-datepicker__month-text--selected,
+.react-datepicker__month-text--in-selecting-range,
+.react-datepicker__month-text--in-range,
+.react-datepicker__quarter-text--selected,
+.react-datepicker__quarter-text--in-selecting-range,
+.react-datepicker__quarter-text--in-range{
+    color: #475666;
+    background: #EAF1FD;
+}
+.react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle{
+    border: 0px;
+    display: none;
+}
+.react-datepicker__day--selected:hover{
+    background: #EAF1FD;
+}
+.react-datepicker__day--keyboard-selected,
+.react-datepicker__month-text--keyboard-selected,
+.react-datepicker__quarter-text--keyboard-selected{
+    background: #EAF1FD;
+}
+.react-datepicker__day--keyboard-selected:hover{
+    background: #EAF1FD;
+}
+.react-datepicker__day--today,
+.react-datepicker__month-text--today,
+.react-datepicker__quarter-text--today{
+    font-weight: normal;
+}
+
+

@@ -1,0 +1,17 @@
+.btnBack{
+    border: 0px;
+    height: 40px;
+    background: #C1CFE0;
+    color: white;
+    padding: 0px 15px;
+    cursor: pointer;
+    outline: none;
+}
+.btnForward{
+    border: 0px;
+    height: 40px;
+    background: #5E97F3;
+    color: white;
+    padding: 0px 15px;
+        cursor: pointer;
+}

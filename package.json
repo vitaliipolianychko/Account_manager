@@ -18,6 +18,7 @@
     "react-scripts": "3.1.2",
     "react-select": "^3.0.8",
     "redux": "^4.0.4",
+    "redux-devtools-extension": "^2.13.8",
     "redux-form": "^8.2.6",
     "redux-saga": "^1.1.1"
   },
@@ -40,6 +41,7 @@
       "git add"
     ]
   },
+  "lint": "eslint --fix",
   "browserslist": {
     "production": [
       ">0.2%",
