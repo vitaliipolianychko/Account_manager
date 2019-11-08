@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap');
-
-.CapabilitiesForm{
+.capabilitiesForm{
 display: flex;
 flex-direction: row;
 justify-content: center;

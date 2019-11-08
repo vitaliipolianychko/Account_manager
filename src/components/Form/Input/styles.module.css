@@ -1,5 +1,4 @@
-
-.input {
+.default {
     width: 300px;
     height: 40px;
     background: #FFFFFF;
@@ -15,7 +14,7 @@
     text-decoration: none;
     margin-top: 5px;
 }
-.inputUser{
+.user {
     width: 400px;
     height: 40px;
     background: #FFFFFF;

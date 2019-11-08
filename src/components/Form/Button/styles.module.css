@@ -1,4 +1,4 @@
-.btnBack{
+.button{
     border: 0px;
     height: 40px;
     background: #C1CFE0;
@@ -7,11 +7,12 @@
     cursor: pointer;
     outline: none;
 }
-.btnForward{
+.submit{
     border: 0px;
     height: 40px;
     background: #5E97F3;
     color: white;
     padding: 0px 15px;
-        cursor: pointer;
+    cursor: pointer;
+    outline: none;
 }

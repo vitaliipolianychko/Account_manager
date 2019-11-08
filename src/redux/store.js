@@ -1,10 +1,10 @@
 import { reducer as formReducer } from 'redux-form';
 import { combineReducers, createStore } from 'redux';
 import { devToolsEnhancer } from 'redux-devtools-extension';
-import Users from './reducer';
+import users from './user';
 
 const rootReducer = combineReducers({
-	Users,
+	users,
 	form: formReducer,
 });
 

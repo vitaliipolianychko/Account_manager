@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap');
-
 .title{
-    font-family: Roboto;
+    font-family: 'Roboto';
     font-style: normal;
     font-weight: bold;
     font-size: 35px;

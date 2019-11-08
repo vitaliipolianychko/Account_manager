@@ -1,12 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './styles.module.css';
 
-export const CustomButton = props => {
-	const { type, children, onClick, style } = props;
-	const className = type === 'submit' ? styles.btnForward : styles.btnBack;
-	return (
-		<button className={className} onClick={onClick} style={style}>
-			{children}
-		</button>
-	);
+export const Button = ({ type, children, ...rest }) => {
+  const className = styles[type];
+  return (
+    // eslint-disable-next-line react/button-has-type
+    <button className={className} {...rest}>
+      {children}
+    </button>
+  );
+};
+
+Button.propTypes = {
+  type: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };

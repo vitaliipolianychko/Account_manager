@@ -8,14 +8,14 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 
 export const render = state => {
-	ReactDOM.render(
-		<Provider store={store}>
-			<BrowserRouter basename="/Account_manager/">
-				<App />
-			</BrowserRouter>
-		</Provider>,
-		document.getElementById('root')
-	);
+  ReactDOM.render(
+    <Provider store={store}>
+      <BrowserRouter basename="/Account_manager/">
+        <App />
+      </BrowserRouter>
+    </Provider>,
+    document.getElementById('root')
+  );
 };
 
 render(store.getState());

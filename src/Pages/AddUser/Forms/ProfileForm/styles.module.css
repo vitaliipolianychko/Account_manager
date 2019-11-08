@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap');
-
-.AccountForm{
+.accountForm{
 display: flex;
 flex-direction: row;
 justify-content: center;
@@ -29,11 +27,6 @@ flex-direction: column;
 }
 .radioMargin{
   margin-bottom: 15px;
-}
-.input{
-    width: 300px;
-    height: 40px;
-    background: #FFFFFF;
 }
 .inputMargin{
     margin-bottom: 40px;
@@ -69,9 +62,6 @@ flex-direction: column;
 }
 .datePicker::placeholder{
   color: #657C9A;
-}
-.btnDisable{
-  pointer-events: none;
 }
 /* The container */
 .container {
